@@ -28,9 +28,9 @@ pipeline {
                 
                 sh 'node --version'
                 sh 'npm --version'
-                sh 'npm install gulp-cli -g'
-                sh 'npm install'
-                sh 'npm install gulp'
+                sh 'sudo npm install gulp-cli -g'
+                sh 'sudo npm install'
+                sh 'sudo npm install gulp'
               
             }
         }
