@@ -38,8 +38,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                sh 'zowe endevor --help'
+                sh 'echo $PATH'
                 sh 'gulp --tasks'
+                sh 'zowe endevor --help'
                 sh 'gulp build-cobol'
             }
         }
