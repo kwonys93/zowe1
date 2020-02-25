@@ -16,8 +16,9 @@ var cmd = require('node-cmd'),
 
 
     gulp.task('build-cobol', function (callback) {
-      var command = "zowe endevor generate element " + config.testElement + " --type COBOL --override-signout --maxrc 0 --stage-number 1";
-    
+  //    var command = "zowe endevor generate element " + config.testElement + " --type COBOL --override-signout --maxrc 0 --stage-number 1";
+    var  command = "zowe endevor generate element FAPCOB05 --env SMPLTEST --sn 1 --sys FINANCE --sub ACCTPAY --type COBOL --cb -i ENDEVOR --comment test223 --ccid abcd";
+
       simpleCommand(command, "command-archive/build-cobol", callback);
     });
 
@@ -213,8 +214,10 @@ function simpleCommand(command, dir, callback, expectedOutputs){
 * @param {awaitJobCallback} callback            function to call after completion
 */
 function submitJobAndDownloadOutput(ds, dir="job-archive", maxRC=0, callback){
-  var command = 'zowe jobs submit data-set "' + ds + '" -d ' + dir + " --rfj";
-  cmd.get(command, function(err, data, stderr) { 
+//  var command = 'zowe jobs submit data-set "' + ds + '" -d ' + dir + " --rfj";
+var command = 'zowe jobs submit data-set "KWOYO01.JCL(SAMPJCL1)" --rff jobid --rft string';
+
+cmd.get(command, function(err, data, stderr) { 
     //log output
     var content = "Error:\n" + err + "\n" + "StdErr:\n" + stderr + "\n" + "Data:\n" + data;
     writeToFile("command-archive/job-submission", content);
