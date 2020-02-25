@@ -1,72 +1,50 @@
 pipeline {
-    agent { label 'zowe-agent' }
+    agent any
     environment {
         // Endevor Details
         ENDEVOR_CONNECTION="--port 6002 --protocol http --reject-unauthorized false"
         ENDEVOR_LOCATION="--instance ENDEVOR --env DEV --sys MARBLES --sub MARBLES --ccid JENKXX --comment JENKXX"
         ENDEVOR="$ENDEVOR_CONNECTION $ENDEVOR_LOCATION"
-
-        ZOWE_OPT_HOSTNAME=credentials('eosHost')
-
+/*
+        JAVA_HOME="C:\\Program Files\\Java\\jdk1.8.0_131"
+        PATH = "C:\\WINDOWS\\SYSTEM32;%JAVA_HOME%\\bin;C:\\Users\\yk892134\\AppData\\Roaming\\npm;C:\\Program Files\\nodejs;C:\\ZOWE;"
+ 
         // z/OSMF Connection Details
         ZOWE_OPT_HOST=credentials('eosHost')
         ZOWE_OPT_PORT="443"
         ZOWE_OPT_REJECT_UNAUTHORIZED=false
-
+*/
         // File Master Plus Connection Details
         FMP="--port 6001 --protocol https --reject-unauthorized false"
 
         // CICS Connection Details
-        CICS="--port 6000 --region-name CICSTRN1"
+        CICS="--port 6000 --region-name CICS00A1"
 
     }
     stages {
-        stage('local setup') {
+        stage('Build') {
             steps {
+                echo 'Building..'
+                
                 sh 'node --version'
                 sh 'npm --version'
-                sh 'zowe --version'
-                sh 'zowe plugins list'
                 sh 'npm install gulp-cli -g'
                 sh 'npm install'
+                sh 'npm install gulp'
+              
             }
         }
-        stage('build') {
+        stage('Deploy') {
             steps {
-                //ZOWE_OPT_USERNAME & ZOWE_OPT_PASSWORD are used to interact with Endevor 
-                withCredentials([usernamePassword(credentialsId: 'eosCreds', usernameVariable: 'ZOWE_OPT_USER', passwordVariable: 'ZOWE_OPT_PASSWORD')]) {
-                    sh 'gulp build'
-                }
+                echo 'Deploying....'
+                sh 'gulp build-cobol'
             }
         }
-        stage('deploy') {
+        stage('Test') {
             steps {
-                //ZOWE_OPT_USER & ZOWE_OPT_PASSWORD are used to interact with z/OSMF and CICS
-                withCredentials([usernamePassword(credentialsId: 'eosCreds', usernameVariable: 'ZOWE_OPT_USER', passwordVariable: 'ZOWE_OPT_PASSWORD')]) {
-                    sh 'gulp deploy'
-                }
+                echo 'Testing..'
+                sh 'gulp bind-n-grant'
             }
-        }
-        stage('test') {
-            steps {
-                //ZOWE_OPT_USER & ZOWE_OPT_PASS are used to interact with z/OSMF
-                withCredentials([usernamePassword(credentialsId: 'eosCreds', usernameVariable: 'ZOWE_OPT_USER', passwordVariable: 'ZOWE_OPT_PASSWORD')]) {
-                    sh 'npm test'
-                }
-            }
-        }
-    }
-
-    post {
-        always {
-            publishHTML([allowMissing: false,
-                alwaysLinkToLastBuild: true,
-                keepAll: true,
-                reportDir: 'mochawesome-report',
-                reportFiles: 'mochawesome.html',
-                reportName: 'Test Results',
-                reportTitles: 'Test Report'
-                ])
         }
     }
 }
