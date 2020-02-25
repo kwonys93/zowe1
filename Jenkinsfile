@@ -26,8 +26,8 @@ pipeline {
             steps {
                 echo 'Building..'
                 
-                sh 'node --version'
-                sh 'npm --version'
+                sh 'bright --version'
+                sh 'zowe --version'
                 sh 'pwd'
  //               sh 'sudo npm install gulp-cli -g'
   //              sh 'sudo npm install'
@@ -38,6 +38,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                sh 'zowe endevor --help'
                 sh 'gulp --tasks'
                 sh 'gulp build-cobol'
             }
