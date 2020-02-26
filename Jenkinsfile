@@ -42,6 +42,7 @@ pipeline {
             steps {
                 echo 'Deploying....'
                 sh 'echo $PATH'
+                sh 'whoami'
                 sh 'gulp --tasks'
                 sh 'zowe zosmf --help'
                 sh 'bright endevor --help'
