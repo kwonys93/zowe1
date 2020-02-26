@@ -26,35 +26,37 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                
+                sh 'gulp build-cobol'
+/*                
                 sh 'zowe plugins list'
                 sh 'zowe --version'
                 sh 'zowe --help'
-                
                 sh 'zowe profiles --help'
                 sh 'pwd'
- //               sh 'sudo npm install gulp-cli -g'
-  //              sh 'sudo npm install'
-    //            sh 'sudo npm install gulp'
-              
+                sh 'sudo npm install gulp-cli -g'
+                sh 'sudo npm install'
+                sh 'sudo npm install gulp'
+ */             
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+/*
                 sh 'echo $PATH'
                 sh 'whoami'
                 sh 'su - root'
                 sh 'gulp --tasks'
                 sh 'zowe zosmf --help'
                 sh 'zowe fmp --help'
+ */ 
                 sh 'gulp build-cobol'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'gulp bind-n-grant'
+                sh 'gulp test-data'
             }
         }
     }

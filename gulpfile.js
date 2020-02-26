@@ -29,7 +29,10 @@ var cmd = require('node-cmd'),
       submitJobAndDownloadOutput(ds, "job-archive/bind-n-grant", 4, callback);
     });
 
-
+    gulp.task('test-data', function (callback) {
+      var ds = config.sqlJCL;
+      submitJobAndDownloadOutput(ds, "job-archive/test-data", 4, callback);
+    });
 
     gulp.task('build-lnk', function (callback) {
       var command = "zowe endevor generate element " + config.testElement + " --type LNK --override-signout --maxrc 0 --stage-number 1";
