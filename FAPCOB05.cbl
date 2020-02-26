@@ -3,7 +3,7 @@
       ******************************************************************        
       *REMARKS.  BATCH COBOL PROGRAM - NO  SUBROUTINES, NO LINK CARDS.          
       *          TO COMPILE USE PROCESSOR COBNBLP (OR COBNBL).                  
-      *       HELLO                                
+      *       HELLO    dfsfas                            
       ******************************************************************        
        ENVIRONMENT DIVISION.                                                    
        INPUT-OUTPUT SECTION.                                                    
