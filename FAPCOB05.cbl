@@ -1,5 +1,5 @@
        IDENTIFICATION DIVISION.                                                 
-       PROGRAM-ID. FAPCOB03.                                                    
+       PROGRAM-ID. FAPCOB05.                                                    
       ******************************************************************        
       *REMARKS.  BATCH COBOL PROGRAM - NO  SUBROUTINES, NO LINK CARDS.          
       *          TO COMPILE USE PROCESSOR COBNBLP (OR COBNBL).                  

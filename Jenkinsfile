@@ -50,7 +50,7 @@ pipeline {
                 sh 'zowe zosmf --help'
                 sh 'zowe fmp --help'
  */ 
-                sh 'gulp build-cobol'
+                sh 'gulp bind-n-grant'
             }
         }
         stage('Test') {
