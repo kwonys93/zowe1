@@ -43,7 +43,7 @@ pipeline {
                 echo 'Deploying....'
                 sh 'echo $PATH'
                 sh 'gulp --tasks'
-                sh 'zowe endevor --help'
+                sh 'zowe zosmf --help'
                 sh 'gulp build-cobol'
             }
         }
