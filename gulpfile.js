@@ -215,7 +215,8 @@ function simpleCommand(command, dir, callback, expectedOutputs){
 * @param {awaitJobCallback} callback            function to call after completion
 */
 function submitJobAndDownloadOutput(ds, dir="job-archive", maxRC=0, callback){
-  var command = 'zowe jobs submit data-set "' + ds + '" -d ' + dir + " --rfj";
+  var command = 'zowe jobs submit data-set "' + ds + '" -d ' + dir + " --rff jobid --rft string";
+//  var command = 'zowe jobs submit data-set "' + ds + '" -d ' + dir + " --rfj";
 //var command = 'zowe jobs submit data-set "KWOYO01.JCL(SAMPJCL1)" --rff jobid --rft string';
 
 cmd.get(command, function(err, data, stderr) { 
