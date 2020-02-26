@@ -1,0 +1,43 @@
+//
+// APIMSGS - url: http://10.175.81.138:10443/endevor/reports/1582702907-478339441-APIMSGS
+//
+
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.         26FEB20 16:41:47     PAGE     1   
+                                       E N D E V O R   A P I   E X E C U T I O N   R E P O R T                                       
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+ 16:41:47  API0101I  BEGINNING OF API ACTION PROCESSING                                                                              
+           API0100I                                                                                                                  
+           API0100I  RETRIEVE ELEMENT:                                                                                               
+           API0100I  'MARBLE01'                                                                                                      
+           API0100I     MESSAGE DDNAME: APIMSGS                                                                                      
+           API0100I     FROM    ENVIRONMENT: SMPLTEST                                                                                
+           API0100I             SYSTEM: FINANCE                                                                                      
+           API0100I             SUBSYSTEM: ACCTPAY                                                                                   
+           API0100I             TYPE: COBOL                                                                                          
+           API0100I             STAGE NUM: 1                                                                                         
+           API0100I     TO      DDNAME: **DYNM**                                                                                     
+           API0100I     OPTIONS                                                                                                      
+           API0100I             CCID: ysk1                                                                                           
+           API0100I             COMMENT: ysk1                                                                                        
+           API0100I             OVERRIDE SIGNOUT: Y                                                                                  
+           API0100I             SEARCH: N                                                                                            
+           API0100I                                                                                                                  
+           API0100I  API ACTION REQUEST DATA SUCCESSFULLY PRINTED                                                                    
+           API0100I                                                                                                                  
+ 16:41:47  C1Y0015I  STARTING PARSE OF REQUEST CARDS                                                                                 
+                                                                                                                                     
+  STATEMENT #1                                                                                                                       
+ 16:41:47  C1Y0016I  REQUEST CARDS SUCCESSFULLY PARSED                                                                               
+                                                                                                                                     
+                                                                                                                                     
+ 16:41:47  C1G0202I  ACTION #1 / STMT #1                                                                                             
+ 16:41:47  C1G0203I     RETRIEVE ELEMENT MARBLE01                                                                                    
+ 16:41:47  C1G0204I        FROM ENVIRONMENT: SMPLTEST SYSTEM: FINANCE  SUBSYSTEM: ACCTPAY  TYPE: COBOL    STAGE ID: T                
+ 16:41:47  C1G0221I        TO   DIR:     C:\path\folder\                                                                             
+ 16:41:47  C1G0232I        OPTIONS:  OVERRIDE SIGNOUT, NEW ELEMENT NAME, NOSEARCH                                                    
+ 16:41:47  C1G0232I                  CCID: YSK1                                                                                      
+ 16:41:47  C1G0232I                  COMMENT: YSK1                                                                                   
+ 16:41:47  C1G1000I  FINGERPRINT#: 01343B1900EC8630                                                                                  
+ 16:41:47  C1G0200I  ELEMENT ACTION REQUEST PROCESSING COMPLETED, HIGHEST ENDEVOR RC WAS 0000                                        
