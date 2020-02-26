@@ -30,6 +30,7 @@ pipeline {
                 sh 'zowe plugins list'
                 sh 'zowe --version'
                 sh 'zowe --help'
+                
                 sh 'zowe profiles --help'
                 sh 'pwd'
  //               sh 'sudo npm install gulp-cli -g'
@@ -43,6 +44,7 @@ pipeline {
                 echo 'Deploying....'
                 sh 'echo $PATH'
                 sh 'whoami'
+                sh 'su - root'
                 sh 'gulp --tasks'
                 sh 'zowe zosmf --help'
                 sh 'bright endevor --help'
