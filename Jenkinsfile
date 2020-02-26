@@ -27,8 +27,10 @@ pipeline {
             steps {
                 echo 'Building..'
                 
-                sh 'bright --version'
+                sh 'zowe plugins list'
                 sh 'zowe --version'
+                sh 'zowe --help'
+                sh 'zowe profiles --help'
                 sh 'pwd'
  //               sh 'sudo npm install gulp-cli -g'
   //              sh 'sudo npm install'
