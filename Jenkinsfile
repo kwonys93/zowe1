@@ -47,7 +47,7 @@ pipeline {
                 sh 'su - root'
                 sh 'gulp --tasks'
                 sh 'zowe zosmf --help'
-                sh 'bright endevor --help'
+                sh 'zowe fmp --help'
                 sh 'gulp build-cobol'
             }
         }
