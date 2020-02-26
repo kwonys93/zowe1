@@ -5,10 +5,10 @@ pipeline {
         ENDEVOR_CONNECTION="--port 6002 --protocol http --reject-unauthorized false"
         ENDEVOR_LOCATION="--instance ENDEVOR --env DEV --sys MARBLES --sub MARBLES --ccid JENKXX --comment JENKXX"
         ENDEVOR="$ENDEVOR_CONNECTION $ENDEVOR_LOCATION"
-/*
-        JAVA_HOME="C:\\Program Files\\Java\\jdk1.8.0_131"
-        PATH = "C:\\WINDOWS\\SYSTEM32;%JAVA_HOME%\\bin;C:\\Users\\yk892134\\AppData\\Roaming\\npm;C:\\Program Files\\nodejs;C:\\ZOWE;"
- 
+
+        JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el7_7.x86_64/jre"
+        PATH = "/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/var/lib/zowe:$PATH"
+/* 
         // z/OSMF Connection Details
         ZOWE_OPT_HOST=credentials('eosHost')
         ZOWE_OPT_PORT="443"
