@@ -19,7 +19,7 @@ var cmd = require('node-cmd'),
   //    var command = "zowe endevor generate element " + config.testElement + " --type COBOL --override-signout --maxrc 0 --stage-number 1";
   //    var  command = "zowe endevor generate element FAPCOB05 --env SMPLTEST --sn 1 --sys FINANCE --sub ACCTPAY --type COBOL --cb -i ENDEVOR --comment test223 --ccid abcd";
        var command = "zowe  endevor list elements -i ENDEVOR --env SMPLTEST --sn 1 --sys FINANCE --sub ACCTPAY --typ COBOL" ;
-       
+
       simpleCommand(command, "command-archive/build-cobol", callback);
     });
 
@@ -215,8 +215,8 @@ function simpleCommand(command, dir, callback, expectedOutputs){
 * @param {awaitJobCallback} callback            function to call after completion
 */
 function submitJobAndDownloadOutput(ds, dir="job-archive", maxRC=0, callback){
-//  var command = 'zowe jobs submit data-set "' + ds + '" -d ' + dir + " --rfj";
-var command = 'zowe jobs submit data-set "KWOYO01.JCL(SAMPJCL1)" --rff jobid --rft string';
+  var command = 'zowe jobs submit data-set "' + ds + '" -d ' + dir + " --rfj";
+//var command = 'zowe jobs submit data-set "KWOYO01.JCL(SAMPJCL1)" --rff jobid --rft string';
 
 cmd.get(command, function(err, data, stderr) { 
     //log output
