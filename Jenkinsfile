@@ -44,6 +44,7 @@ pipeline {
                 sh 'echo $PATH'
                 sh 'gulp --tasks'
                 sh 'zowe zosmf --help'
+                sh 'bright endevor --help'
                 sh 'gulp build-cobol'
             }
         }
