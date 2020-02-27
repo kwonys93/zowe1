@@ -21,22 +21,18 @@ var cmd = require('node-cmd'),
   //var  command = "zowe endevor generate element FAPCOB05 --env SMPLTEST --sn 1 --sys FINANCE --sub ACCTPAY --type COBOL --cb -i ENDEVOR --comment test223 --ccid abcd";
   //     var command = "zowe  endevor list elements -i ENDEVOR --env SMPLTEST --sn 1 --sys FINANCE --sub ACCTPAY --typ COBOL" ;
 
-      simpleCommand(command, callback);
-  //    simpleCommand(command, "command-archive/build-cobol", callback);
-
+      simpleCommand(command, "command-archive/build-cobol", callback);
     });
 
 
     gulp.task('bind-n-grant', function (callback) {
       var ds = config.bindGrantJCL;
-      submitJobAndDownloadOutput(ds, 4, callback);
-   //   submitJobAndDownloadOutput(ds, "job-archive/bind-n-grant", 4, callback);
+      submitJobAndDownloadOutput(ds, "job-archive/bind-n-grant", 4, callback);
     });
 
     gulp.task('test-data', function (callback) {
       var ds = config.sqlJCL;
-      submitJobAndDownloadOutput(ds, 4, callback);
-   //   submitJobAndDownloadOutput(ds, "job-archive/test-data", 4, callback);
+      submitJobAndDownloadOutput(ds, "job-archive/test-data", 4, callback);
     });
 
     gulp.task('build-lnk', function (callback) {
