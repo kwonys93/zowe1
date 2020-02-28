@@ -244,7 +244,7 @@ function simpleCommand(command, callback){
 * @param {awaitJobCallback} callback            function to call after completion
 */
 
-function submitJob(ds, maxRC=0, callback){
+function submitJob(ds, maxRC=4, callback){
   var command = 'zowe jobs submit data-set "' + ds + '" --vasc'
   // var command = 'zowe jobs submit data-set "' + ds + '" --rff jobid --rft string'
   // var command = 'zowe jobs submit data-set "KWOYO01.JCL(SAMPJCL1)" --view-all-spool-content';
