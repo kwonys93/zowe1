@@ -25,16 +25,12 @@ pipeline {
     stages {
         stage('BUILD') {
             stage('Build-cobol') {
-                steps {
                     echo 'Building cobol..'
                     sh 'gulp build-cobol'
-                }
             }
             stage('Build-lnk') {
-                steps {
                     echo 'Building lnk..'
                     sh 'gulp --tasks'
-                }
             }
         }
         stage('Copy-load') {
