@@ -24,7 +24,7 @@ pipeline {
     }
     stages {
         stage('BUILD') {
-          steps{
+          steps {
             parallel (
              "Build-cobol": { 
                 echo 'Building cobol..'
@@ -41,34 +41,40 @@ pipeline {
             )
           }
         }
-        stage('Copy-load') {
+        stage('DEPLOY') {
             steps {
-                echo 'Copying module to CICS env..'
-                sh 'gulp copy-load'
+              parallel (
+                "Copy-load": { 
+                    echo 'Copying module to CICS env..'
+                    sh 'gulp copy-load'
+                 },
+                "Copy-dbrm": { 
+                    echo 'Copying dbrm to db2..'
+                    sh 'gulp copy-dbrm'
+                },
+                "CICS-refresh": { 
+                    echo 'New copying module in CICS..'
+                    sh 'gulp cics-refresh'
+                 },
+                "Bind-n-grant": { 
+                    echo 'Binding db2 plan and granting..'
+                    sh 'gulp bind-n-grant'
+                 },
+              )  
             }
         }
-        stage('Copy-dbrm') {
+        stage('TEST') {
             steps {
-                echo 'Copying dbrm to db2..'
-                sh 'gulp copy-dbrm'
-            }
-        }
-        stage('CICS-refresh') {
-            steps {
-                echo 'New copying module in CICS..'
-                sh 'gulp cics-refresh'
-            }
-        }
-        stage('Bind-n-grant') {
-            steps {
-                echo 'Binding db2 plan and granting..'
-                sh 'gulp bind-n-grant'
-            }
-        }
-        stage('Test-data') {
-            steps {
-                echo 'Testing data..'
-                sh 'gulp test-data'
+              parallel (
+                "Test-data": { 
+                    echo 'Testing data..'
+                    sh 'gulp test-data'
+                 },
+                "Test-Validation": { 
+                    echo 'Validating..'
+                    sh 'gulp --tasks'
+                },
+              ) 
             }
         }
     }
