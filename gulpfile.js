@@ -87,7 +87,8 @@ function sleep(ms) {
     });
     
     gulp.task('copy-load',  function (callback) {
-      var command = 'zowe file-master-plus copy data-set "' + config.devLOADLIB + '" "' + config.testLOADLIB + '" -m ' + config.testElement;
+      var command = 'zowe zos-extended-files copy data-set "KWOYO01.JCL(B)" "KWOYO01.EDVR.JCL(B)" --replace';
+      //var command = 'zowe file-master-plus copy data-set "' + config.devLOADLIB + '" "' + config.testLOADLIB + '" -m ' + config.testElement;
     
       simpleCommand(command, callback);
     });
