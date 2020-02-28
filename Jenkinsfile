@@ -24,14 +24,20 @@ pipeline {
     }
     stages {
         stage('BUILD') {
-            stage('Build-cobol') {
-                    echo 'Building cobol..'
-                    sh 'gulp build-cobol'
-            }
-            stage('Build-lnk') {
-                    echo 'Building lnk..'
-                    sh 'gulp --tasks'
-            }
+           parallel (
+             "Build-cobol": { 
+                echo 'Building cobol..'
+                sh 'gulp build-cobol'
+             },
+             "Generate-lnk": { 
+                echo 'Generating cobol..'
+                sh 'gulp --tasks'
+             },
+             "Generate-lnk": { 
+                echo 'Generating lnk..'
+                sh "echo Jasmine"
+             },
+            )
         }
         stage('Copy-load') {
             steps {
