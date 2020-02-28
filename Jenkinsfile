@@ -23,20 +23,40 @@ pipeline {
 
     }
     stages {
-        stage('Build') {
+        stage('build-cobol') {
             steps {
-                echo 'Building..'
+                echo 'Building cobol..'
                 sh 'gulp build-cobol'
-/*                
-                sh 'zowe plugins list'
-                sh 'zowe --version'
-                sh 'zowe --help'
-                sh 'zowe profiles --help'
-                sh 'pwd'
-                sh 'sudo npm install gulp-cli -g'
-                sh 'sudo npm install'
-                sh 'sudo npm install gulp'
- */             
+            }
+        }
+        stage('copy-load') {
+            steps {
+                echo 'Copying module to CICS env..'
+                sh 'gulp copy-load'
+            }
+        }
+        stage('copy-dbrm') {
+            steps {
+                echo 'Copying dbrm to db2..'
+                sh 'gulp copy-dbrm'
+            }
+        }
+        stage('cics-refresh') {
+            steps {
+                echo 'New copying module in CICS..'
+                sh 'gulp cics-refresh'
+            }
+        }
+        stage('bind-n-grant') {
+            steps {
+                echo 'Binding db2 plan and granting..'
+                sh 'gulp bind-n-grant'
+            }
+        }
+        stage('test-data') {
+            steps {
+                echo 'Testing data..'
+                sh 'gulp test-data'
             }
         }
         stage('Deploy') {

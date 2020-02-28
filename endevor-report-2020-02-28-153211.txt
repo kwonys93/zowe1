@@ -1,0 +1,50 @@
+//
+// APIMSGS - url: http://10.175.81.138:10443/endevor/reports/1582875157-174181701-APIMSGS
+//
+
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.         28FEB20 16:32:36     PAGE     1   
+                                       E N D E V O R   A P I   E X E C U T I O N   R E P O R T                                       
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+ 16:32:36  API0101I  BEGINNING OF API ACTION PROCESSING                                                                              
+           API0100I                                                                                                                  
+           API0100I  ADD      ELEMENT:                                                                                               
+           API0100I  'FAPCOB05'                                                                                                      
+           API0100I     MESSAGE DDNAME: APIMSGS                                                                                      
+           API0100I     FROM DIR:                                                                                                    
+           API0100I  '/temp'                                                                                                         
+           API0100I     FILE:                                                                                                        
+           API0100I  'null'                                                                                                          
+           API0100I     FROM    DDNAME: **DYNM**                                                                                     
+           API0100I     TO      ENVIRONMENT: SMPLTEST                                                                                
+           API0100I             SYSTEM: FINANCE                                                                                      
+           API0100I             SUBSYSTEM: ACCTPAY                                                                                   
+           API0100I             TYPE: COBOL                                                                                          
+           API0100I     OPTIONS                                                                                                      
+           API0100I             CCID: abcd5                                                                                          
+           API0100I             COMMENT: test225                                                                                     
+           API0100I             UPDATE IF PRESENT: Y                                                                                 
+           API0100I             BYPASS GENERATE PROCESSOR: Y                                                                         
+           API0100I                                                                                                                  
+           API0100I  API ACTION REQUEST DATA SUCCESSFULLY PRINTED                                                                    
+           API0100I                                                                                                                  
+ 16:32:36  C1Y0015I  STARTING PARSE OF REQUEST CARDS                                                                                 
+                                                                                                                                     
+  STATEMENT #1                                                                                                                       
+ 16:32:36  C1Y0016I  REQUEST CARDS SUCCESSFULLY PARSED                                                                               
+                                                                                                                                     
+                                                                                                                                     
+ 16:32:36  C1G0202I  ACTION #1 / STMT #1                                                                                             
+ 16:32:36  C1G0203I     ADD      ELEMENT FAPCOB05                                                                                    
+ 16:32:36  C1G0221I        FROM DIR:     /temp                                                                                       
+ 16:32:36  C1G0221I        FROM FILE:    null                                                                                        
+ 16:32:36  C1G0204I        TO   ENVIRONMENT: SMPLTEST SYSTEM: FINANCE  SUBSYSTEM: ACCTPAY  TYPE: COBOL    STAGE ID: T                
+ 16:32:36  C1G0232I        OPTIONS:  UPDATE, BYPASS GENERATE PROCESSOR                                                               
+ 16:32:36  C1G0232I                  CCID: ABCD5                                                                                     
+ 16:32:36  C1G0232I                  COMMENT: TEST225                                                                                
+ 16:32:37  C1G0265I  PROCESSOR GROUP CIINBL FOR THIS ELEMENT WAS OBTAINED FROM PRIMARY ELEMENT RECORD                                
+ 16:32:37  SMGR122W  NO ELEMENT SOURCE CHANGES DETECTED                                                                              
+ 16:32:37  SMGR129I  ELEMENT VVLL 0102 NOT UPDATED AT TEST                                                                           
+ 16:32:37  C1G1000I  FINGERPRINT#: 01343B23015259BF                                                                                  
+ 16:32:37  C1G0200I  ELEMENT ACTION REQUEST PROCESSING COMPLETED, HIGHEST ENDEVOR RC WAS 0004                                        
