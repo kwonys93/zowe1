@@ -29,7 +29,7 @@ pipeline {
                 echo 'Building cobol..'
                 sh 'gulp build-cobol'
              },
-             "Generate-lnk": { 
+             "Generate-cobol": { 
                 echo 'Generating cobol..'
                 sh 'gulp --tasks'
              },
