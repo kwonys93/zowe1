@@ -23,59 +23,39 @@ pipeline {
 
     }
     stages {
-        stage('build-cobol') {
+        stage('Build-cobol') {
             steps {
                 echo 'Building cobol..'
                 sh 'gulp build-cobol'
             }
         }
-        stage('copy-load') {
+        stage('Copy-load') {
             steps {
                 echo 'Copying module to CICS env..'
                 sh 'gulp copy-load'
             }
         }
-        stage('copy-dbrm') {
+        stage('Copy-dbrm') {
             steps {
                 echo 'Copying dbrm to db2..'
                 sh 'gulp copy-dbrm'
             }
         }
-        stage('cics-refresh') {
+        stage('CICS-refresh') {
             steps {
                 echo 'New copying module in CICS..'
                 sh 'gulp cics-refresh'
             }
         }
-        stage('bind-n-grant') {
+        stage('Bind-n-grant') {
             steps {
                 echo 'Binding db2 plan and granting..'
                 sh 'gulp bind-n-grant'
             }
         }
-        stage('test-data') {
+        stage('Test-data') {
             steps {
                 echo 'Testing data..'
-                sh 'gulp test-data'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-/*
-                sh 'echo $PATH'
-                sh 'whoami'
-                sh 'su - root'
-                sh 'gulp --tasks'
-                sh 'zowe zosmf --help'
-                sh 'zowe fmp --help'
- */ 
-                sh 'gulp bind-n-grant'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
                 sh 'gulp test-data'
             }
         }
