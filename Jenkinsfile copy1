@@ -23,47 +23,39 @@ pipeline {
 
     }
     stages {
-        stage('BUILD') {
-            stage('Build-cobol') {
-                steps {
-                    echo 'Building cobol..'
-                    sh 'gulp build-cobol'
-                }
-            }
-            stage('Build-lnk') {
-                steps {
-                    echo 'Building lnk..'
-                    sh 'gulp --tasks'
-                }
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                sh 'gulp build-cobol'
+/*                
+                sh 'zowe plugins list'
+                sh 'zowe --version'
+                sh 'zowe --help'
+                sh 'zowe profiles --help'
+                sh 'pwd'
+                sh 'sudo npm install gulp-cli -g'
+                sh 'sudo npm install'
+                sh 'sudo npm install gulp'
+ */             
             }
         }
-        stage('Copy-load') {
+        stage('Deploy') {
             steps {
-                echo 'Copying module to CICS env..'
-                sh 'gulp copy-load'
-            }
-        }
-        stage('Copy-dbrm') {
-            steps {
-                echo 'Copying dbrm to db2..'
-                sh 'gulp copy-dbrm'
-            }
-        }
-        stage('CICS-refresh') {
-            steps {
-                echo 'New copying module in CICS..'
-                sh 'gulp cics-refresh'
-            }
-        }
-        stage('Bind-n-grant') {
-            steps {
-                echo 'Binding db2 plan and granting..'
+                echo 'Deploying....'
+/*
+                sh 'echo $PATH'
+                sh 'whoami'
+                sh 'su - root'
+                sh 'gulp --tasks'
+                sh 'zowe zosmf --help'
+                sh 'zowe fmp --help'
+ */ 
                 sh 'gulp bind-n-grant'
             }
         }
-        stage('Test-data') {
+        stage('Test') {
             steps {
-                echo 'Testing data..'
+                echo 'Testing..'
                 sh 'gulp test-data'
             }
         }
