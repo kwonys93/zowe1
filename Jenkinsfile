@@ -24,7 +24,8 @@ pipeline {
     }
     stages {
         stage('BUILD') {
-           parallel (
+          steps{
+            parallel (
              "Build-cobol": { 
                 echo 'Building cobol..'
                 sh 'gulp build-cobol'
@@ -38,6 +39,7 @@ pipeline {
                 sh "echo Jasmine"
              },
             )
+          }
         }
         stage('Copy-load') {
             steps {
