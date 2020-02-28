@@ -45,7 +45,8 @@ var cmd = require('node-cmd'),
     
 
     gulp.task('cics-refresh', function (callback) {
-      var command = 'zowe cics refresh program "' + config.cicsProgram + '"';
+     // var command = 'zowe cics refresh program "' + config.cicsProgram + '"';
+     var command = 'zowe cics refresh program "' + config.cicsProgram + '"' + ' --region-name "' + config.cicsRegion +'"';
     
       simpleCommand(command, "command-archive/cics-refresh", callback);
     });
