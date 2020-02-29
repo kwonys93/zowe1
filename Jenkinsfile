@@ -44,13 +44,14 @@ pipeline {
         stage('DEPLOY') {
             steps {
               parallel (
-                "Copy-load": { 
-                    echo 'Copying module to CICS env..'
-                    sh 'gulp copy-load'
-                 },
-                "Copy-dbrm": { 
+  //              "Copy-load": { 
+  //                  echo 'Copying module to CICS env..'
+  //                  sh 'gulp copy-load'
+  //               },
+                "Copy-PGM": { 
                     echo 'Copying dbrm to db2..'
                     sh 'gulp copy-dbrm'
+                    sh 'gulp copy-load'
                 },
                 "CICS-refresh": { 
                     echo 'New copying module in CICS..'
