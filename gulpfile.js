@@ -53,14 +53,14 @@ var cmd = require('node-cmd'),
     
     gulp.task('copy-dbrm', function (callback) {
       //var command = 'zowe file-master-plus copy data-set "' + config.devDBRMLIB + '" "' + config.testDBRMLIB + '" -m ' + config.testElement;
-      var command = 'zowe zos-extended-files copy data-set "KWOYO01.JCL(A)" "KWOYO01.EDVR.JCL(A)" --replace';
+      var command = 'zowe zos-extended-files copy data-set "KWOYO01.MARBLES.DBRMLIB(MARBLE01)" "KWOYO01.MARBLES.DBRMLIB2(MARBLE01)" --replace';
 
       simpleCommand(command, "command-archive/copy-dbrm", callback);
     });
     
     gulp.task('copy-load',  function (callback) {
       //var command = 'zowe file-master-plus copy data-set "' + config.devLOADLIB + '" "' + config.testLOADLIB + '" -m ' + config.testElement;
-      var command = 'zowe zos-extended-files copy data-set "KWOYO01.JCL(B)" "KWOYO01.MARBLES.JCL(B)" --replace';
+      var command = 'zowe zos-extended-files copy data-set "KWOYO01.MARBLES.LOADLIB(MARBLE01)" "KWOYO01.MARBLES.LOADLIB2(MARBLE01)" --replace';
 
       simpleCommand(command, "command-archive/copy-load", callback);
     });
