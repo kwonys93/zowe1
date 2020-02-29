@@ -60,7 +60,7 @@ var cmd = require('node-cmd'),
     
     gulp.task('copy-load',  function (callback) {
       //var command = 'zowe file-master-plus copy data-set "' + config.devLOADLIB + '" "' + config.testLOADLIB + '" -m ' + config.testElement;
-      var command = 'zowe zos-extended-files copy data-set "KWOYO01.MARBLES.LOADLIB(MARBLE01)" "KWOYO01.MARBLES.LOADLIB2(MARBLE01)" --replace';
+      var command = 'zowe zos-extended-files copy data-set "KWOYO01.JCL(A)" "KWOYO01.MARBLES.JCL(A)" --replace';
 
       simpleCommand(command, "command-archive/copy-load", callback);
     });
