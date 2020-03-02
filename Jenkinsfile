@@ -80,7 +80,7 @@ pipeline {
     //                echo 'Validating..'
     //                sh 'chmod -R 777 /var/lib/jenkins/workspace/zowe-pipeline1/node_modules/.bin/*'
     //                sh 'npm test'
-                },
+    //            },
               ) 
             }
         }
