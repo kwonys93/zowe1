@@ -72,14 +72,14 @@ pipeline {
         stage('TEST') {
             steps {
               parallel (
-   //             "Test-data": { 
-   //                 echo 'Testing data..'
-   //                 sh 'gulp test-data'
-   //              },
-                "Test-Validation": { 
-                    echo 'Validating..'
-                    sh 'chmod -R 777 /var/lib/jenkins/workspace/zowe-pipeline1/node_modules/.bin/*'
-                    sh 'npm test'
+                "Test-data": { 
+                    echo 'Testing data..'
+                    sh 'gulp test-data'
+                 },
+   //             "Test-Validation": { 
+    //                echo 'Validating..'
+    //                sh 'chmod -R 777 /var/lib/jenkins/workspace/zowe-pipeline1/node_modules/.bin/*'
+    //                sh 'npm test'
                 },
               ) 
             }
