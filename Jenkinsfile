@@ -78,7 +78,7 @@ pipeline {
                  },
                 "Test-Validation": { 
                     echo 'Validating..'
-                    sh 'gulp --tasks'
+                    sh 'npm test'
                 },
               ) 
             }
