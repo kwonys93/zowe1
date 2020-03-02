@@ -1,5 +1,5 @@
 {
-    "bindnGrantJCL"              : "KWOYO01.MARBLES.JCL(MARBIND7)",
+    "bindGrantJCL"              : "KWOYO01.MARBLES.JCL(MARBIND)",
     "sqlJCL"                    : "KWOYO01.MARBLES.JCL(MARBDB2)",    
     "cicsConsole"               : "KWOYO01",
     "cicsPort"                  : 6000,
