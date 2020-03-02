@@ -23,70 +23,40 @@ pipeline {
 
     }
     stages {
-        stage('BUILD') {
-          steps {
-            parallel (
- /*            "Update-cobol": { 
-                echo 'Building cobol..'
-                sh 'gulp update-cobol'
-             },
-     */        
-             "Build-cobol": { 
-                echo 'Generating cobol..'
-                sh 'build-cobol'
-             },
-             "Build-lnk": { 
-                echo 'Generating lnk..'
-                sh "build-lnk"
-             },
-            )
-          }
-        }
-        stage('COPYING') {
-          steps {
-            parallel (
- /*            "Copy-load": { 
-                echo 'Copying module to CICS env..'
-                sh 'gulp copy-load'
-             },
-   */
-             "Copy-DBRM": { 
-                echo 'Copying dbrm to db2..'
-                sh 'gulp copy-dbrm'
-             },
-            )
-          }
-        }
-        stage('DEPLOY') {
+        stage('Build-cobol') {
             steps {
-              parallel (
-                 "CICS-refresh": { 
-                    echo 'New copying module in CICS..'
-                    sh 'gulp cics-refresh'
-                 },
-                "Bind-n-grant": { 
-                    echo 'Binding db2 plan and granting..'
-                    sh 'gulp bind-n-grant'
-                 },
-              )  
+                echo 'Building cobol..'
+                sh 'gulp build-cobol'
             }
         }
-        stage('TEST') {
+        stage('Copy-load') {
             steps {
-              parallel (
-     
-                "Test-data": { 
-                    echo 'Testing data..'
-                    sh 'gulp test-data'
-                 },
-   /* 
-               "Test-Validation": { 
-                    echo 'Validating..'
-                    sh 'chmod -R 777 /var/lib/jenkins/workspace/zowe-pipeline1/node_modules/.bin/*'
-                    sh 'npm test'
-                },
-   */             
-              ) 
+                echo 'Copying module to CICS env..'
+                sh 'gulp copy-load'
+            }
+        }
+        stage('Copy-dbrm') {
+            steps {
+                echo 'Copying dbrm to db2..'
+                sh 'gulp copy-dbrm'
+            }
+        }
+        stage('CICS-refresh') {
+            steps {
+                echo 'New copying module in CICS..'
+                sh 'gulp cics-refresh'
+            }
+        }
+        stage('Bind-n-grant') {
+            steps {
+                echo 'Binding db2 plan and granting..'
+                sh 'gulp bind-n-grant'
+            }
+        }
+        stage('Test-data') {
+            steps {
+                echo 'Testing data..'
+                sh 'gulp test-data'
             }
         }
     }
