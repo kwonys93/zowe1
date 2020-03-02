@@ -41,19 +41,24 @@ pipeline {
             )
           }
         }
+        stage('COPYING') {
+          steps {
+            parallel (
+             "Copy-load": { 
+                echo 'Copying module to CICS env..'
+                sh 'gulp copy-load'
+             },
+             "Copy-DBRM": { 
+                echo 'Copying dbrm to db2..'
+                sh 'gulp copy-dbrm'
+             },
+            )
+          }
+        }
         stage('DEPLOY') {
             steps {
               parallel (
-  //              "Copy-load": { 
-  //                  echo 'Copying module to CICS env..'
-  //                  sh 'gulp copy-load'
-  //               },
-                "Copy-PGM": { 
-                    echo 'Copying dbrm to db2..'
-                    sh 'gulp copy-dbrm'
-                    sh 'gulp copy-load'
-                },
-                "CICS-refresh": { 
+                 "CICS-refresh": { 
                     echo 'New copying module in CICS..'
                     sh 'gulp cics-refresh'
                  },
