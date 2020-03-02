@@ -26,17 +26,17 @@ pipeline {
         stage('BUILD') {
           steps {
             parallel (
-             "Build-cobol": { 
+             "Update-cobol": { 
                 echo 'Building cobol..'
-                sh 'gulp build-cobol'
+                sh 'gulp update-cobol'
              },
-             "Generate-cobol": { 
+             "Build-cobol": { 
                 echo 'Generating cobol..'
-                sh 'gulp --tasks'
+                sh 'build-cobol'
              },
-             "Generate-lnk": { 
+             "Build-lnk": { 
                 echo 'Generating lnk..'
-                sh "echo Jasmine"
+                sh "build-lnk"
              },
             )
           }
@@ -44,10 +44,11 @@ pipeline {
         stage('COPYING') {
           steps {
             parallel (
-             "Copy-load": { 
+ /*            "Copy-load": { 
                 echo 'Copying module to CICS env..'
                 sh 'gulp copy-load'
              },
+   */
              "Copy-DBRM": { 
                 echo 'Copying dbrm to db2..'
                 sh 'gulp copy-dbrm'
@@ -72,17 +73,18 @@ pipeline {
         stage('TEST') {
             steps {
               parallel (
-     /*
+     
                 "Test-data": { 
                     echo 'Testing data..'
                     sh 'gulp test-data'
                  },
-   */ 
+   /* 
                "Test-Validation": { 
                     echo 'Validating..'
                     sh 'chmod -R 777 /var/lib/jenkins/workspace/zowe-pipeline1/node_modules/.bin/*'
                     sh 'npm test'
                 },
+   */             
               ) 
             }
         }

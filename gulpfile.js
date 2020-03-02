@@ -15,14 +15,29 @@ var cmd = require('node-cmd'),
     })
 
 
+    gulp.task('update-cobol', function (callback) {
+   //   var command = "zowe endevor generate element " + config.testElement + " --type COBOL --override-signout --maxrc 0 --stage-number 1";
+  var command = "zowe  endevor update element MARBLE01 --env SMPLTEST --sys MARBLES --sub MARBLES --typ COBOL --ff MARBLE01.cbl -i ENDEVOR --comment test9 --ccid abcd";
+  
+     simpleCommand(command, "command-archive/update-cobol", callback);
+        });
+
     gulp.task('build-cobol', function (callback) {
+    
+      var command = "zowe endevor generate element MARBLE01 --env SMPLTEST --sn 1 --sys MARBLES --sub MARBLES --type COBOL --override-signout --cb -i ENDEVOR --comment test223 --ccid abcd";
   //    var command = "zowe endevor generate element " + config.testElement + " --type COBOL --override-signout --maxrc 0 --stage-number 1";
-  //var command = "zowe  endevor update element MARBLE01 --env SMPLTEST --sys    --sub ACCTPAY --typ COBOL --ff MARBLE01.cbl -i ENDEVOR --comment test9 --ccid abcd9";
-  var command = "zowe endevor generate element MARBLE01 --env SMPLTEST --sn 1 --sys MARBLES --sub MARBLES --type COBOL --override-signout --cb -i ENDEVOR --comment test9 --ccid abcd9";
+  //var command = "zowe  endevor update element FINARP05 --env SMPLTEST --sys --sub ACCTPAY --typ COBOL --ff MARBLE01.cbl -i ENDEVOR --comment test9 --ccid abcd9";
   //var  command = "zowe endevor generate element FAPCOB05 --env SMPLTEST --sn 1 --sys FINANCE --sub ACCTPAY --type COBOL --cb -i ENDEVOR --comment test223 --ccid abcd";
   //     var command = "zowe  endevor list elements -i ENDEVOR --env SMPLTEST --sn 1 --sys FINANCE --sub ACCTPAY --typ COBOL" ;
 
       simpleCommand(command, "command-archive/build-cobol", callback);
+    });
+
+
+    gulp.task('build-lnk', function (callback) {
+    //  var command = "zowe endevor generate element " + config.testElement + " --type LNK --override-signout --maxrc 0 --stage-number 1";
+      var command = "zowe endevor generate element MARBLE01 --env SMPLTEST --sn 1 --sys MARBLES --sub MARBLES --type LNK --cb -i ENDEVOR --comment test223 --ccid abcd --os";
+      simpleCommand(command, "command-archive/build-lnk", callback);
     });
 
 
@@ -36,11 +51,7 @@ var cmd = require('node-cmd'),
       submitJobAndDownloadOutput(ds, "job-archive/test-data", 4, callback);
     });
 
-    gulp.task('build-lnk', function (callback) {
-      var command = "zowe endevor generate element " + config.testElement + " --type LNK --override-signout --maxrc 0 --stage-number 1";
     
-      simpleCommand(command, "command-archive/build-lnk", callback);
-    });
     
     gulp.task('build', gulpSequence('build-cobol','build-lnk'));
     

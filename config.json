@@ -3,7 +3,7 @@
     "sqlJCL"                    : "KWOYO01.MARBLES.JCL(MARBDB2)",    
     "cicsConsole"               : "KWOYO01",
     "cicsPort"                  : 6000,
-    "cicsProgram"               : "MARBLE07",
+    "cicsProgram"               : "MARBLE01",
     "cicsProtocol"              : "http",
     "cicsRegion"                : "CICS00A1",
     "cicsTran"                  : "MB01",
@@ -23,7 +23,7 @@
     "fmpRejectUnauthorized"     : false,
     "marbleColor"               : "RED",
     "testDBRMLIB"               : "KWOYO01.MARBLES.DBRMLIB",
-    "testElement"               : "MARBLE07",
+    "testElement"               : "MARBLE01",
     "testLOADLIB"               : "CICS.TRAIN.MARBLES.LOADLIB",
     "zosmfPort"                 : 443,
     "zosmfRejectUnauthorized"   : false
