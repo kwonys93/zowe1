@@ -23,18 +23,31 @@ pipeline {
 
     }
     stages {
+        stage('Update-cobol') {
+            steps {
+                echo 'Updating cobol source code in Endevor..'
+                sh 'gulp update-cobol'
+            }
+        }
         stage('Build-cobol') {
             steps {
                 echo 'Building cobol..'
                 sh 'gulp build-cobol'
             }
         }
-        stage('Copy-load') {
+        stage('Build-lnk') {
+            steps {
+                echo 'Building module to CICS..'
+                sh 'gulp build-lnk'
+            }
+        }
+/*      stage('Copy-load') {
             steps {
                 echo 'Copying module to CICS env..'
                 sh 'gulp copy-load'
             }
         }
+*/
         stage('Copy-dbrm') {
             steps {
                 echo 'Copying dbrm to db2..'
