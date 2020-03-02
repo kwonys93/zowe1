@@ -21,7 +21,7 @@
     "fmpPort"                   : 6001,
     "fmpProtocol"               : "https",
     "fmpRejectUnauthorized"     : false,
-    "marbleColor"               : "BLACK",
+    "marbleColor"               : "RED",
     "testDBRMLIB"               : "KWOYO01.MARBLES.DBRMLIB",
     "testElement"               : "MARBLE01",
     "testLOADLIB"               : "CICS.TRAIN.MARBLES.LOADLIB",
