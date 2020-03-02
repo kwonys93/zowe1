@@ -17,7 +17,7 @@ var cmd = require('node-cmd'),
 
     gulp.task('update-cobol', function (callback) {
    //   var command = "zowe endevor generate element " + config.testElement + " --type COBOL --override-signout --maxrc 0 --stage-number 1";
-  var command = "zowe  endevor update element MARBLE01 --env SMPLTEST --sys MARBLES --sub MARBLES --typ COBOL --ff MARBLE01.cbl -i ENDEVOR --comment test1 --ccid abcd";
+  var command = "zowe  endevor update element MARBLE01 --env SMPLTEST --sys MARBLES --sub MARBLES --typ COBOL --ff MARBLE01.cbl -i ENDEVOR --comment test1 --ccid abcd1";
   
      simpleCommand(command, "command-archive/update-cobol", callback);
    });
