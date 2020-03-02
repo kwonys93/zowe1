@@ -27,7 +27,7 @@ var cmd = require('node-cmd'),
 
 
     gulp.task('bind-n-grant', function (callback) {
-      var ds = config.bindGrantJCL;
+      var ds = config.bindnGrantJCL;
       submitJobAndDownloadOutput(ds, "job-archive/bind-n-grant", 4, callback);
     });
 
