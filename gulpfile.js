@@ -17,8 +17,8 @@ var cmd = require('node-cmd'),
 
     gulp.task('build-cobol', function (callback) {
   //    var command = "zowe endevor generate element " + config.testElement + " --type COBOL --override-signout --maxrc 0 --stage-number 1";
-  var command = "zowe  endevor update element FAPCOB05 --env SMPLTEST --sys FINANCE --sub ACCTPAY --typ COBOL --ff FAPCOB05.cbl -i ENDEVOR --comment test225 --ccid abcd5";
-  // var command = "zowe endevor generate element MARBLE01 --env SMPLTEST --sn 1 --sys MARBLES --sub MARBLES --type COBOL --override-signout --cb -i ENDEVOR --comment test223 --ccid abcd";
+  //var command = "zowe  endevor update element MARBLE01 --env SMPLTEST --sys    --sub ACCTPAY --typ COBOL --ff MARBLE01.cbl -i ENDEVOR --comment test9 --ccid abcd9";
+  var command = "zowe endevor generate element MARBLE01 --env SMPLTEST --sn 1 --sys MARBLES --sub MARBLES --type COBOL --override-signout --cb -i ENDEVOR --comment test9 --ccid abcd9";
   //var  command = "zowe endevor generate element FAPCOB05 --env SMPLTEST --sn 1 --sys FINANCE --sub ACCTPAY --type COBOL --cb -i ENDEVOR --comment test223 --ccid abcd";
   //     var command = "zowe  endevor list elements -i ENDEVOR --env SMPLTEST --sn 1 --sys FINANCE --sub ACCTPAY --typ COBOL" ;
 
