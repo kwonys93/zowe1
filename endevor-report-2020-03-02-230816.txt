@@ -1,0 +1,599 @@
+//
+// APIMSGS - url: http://10.175.81.138:10443/endevor/reports/1583161722-111957495-APIMSGS
+//
+
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.         03MAR20 00:08:40     PAGE     1   
+                                       E N D E V O R   A P I   E X E C U T I O N   R E P O R T                                       
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+ 00:08:40  API0101I  BEGINNING OF API ACTION PROCESSING                                                                              
+           API0100I  API SCL REQUEST                                                                                                 
+           API0100I     MESSAGE DDNAME: APIMSGS                                                                                      
+           API0100I     SCL TYPE: E                                                                                                  
+           API0100I  SCL COMMANDS:                                                                                                   
+           API0100I  GENERATE ELEMENT 'MARBLE01' FROM ENV 'SMPLTEST' SYS 'MARBLES' SUB                                               
+           API0100I  'MARBLES' TYP 'COBOL' STA NUM '1' OPTIONS CCID 'abcd' COMMENT                                                   
+           API0100I  'test223' OVERRIDE SIGNOUT COPYBACK SEARCH .                                                                    
+           API0100I                                                                                                                  
+ 00:08:40  API0102I  DISPATCHING API ACTION                                                                                          
+ 00:08:42  API0000I  PROCESSING COMPLETE - RC=00000 REASON=00000                                                                     
+
+//
+// C1MSGS1 - url: http://10.175.81.138:10443/endevor/reports/1583161722-677106368-C1MSGS1
+//
+
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.         03MAR20 00:08:40     PAGE     1   
+                                      E N D E V O R   S Y N T A X   R E Q U E S T   R E P O R T                                      
+ REQUESTED BY: KWOYO01                                                                                                               
+                                                                                                                                     
+                                                                                                                                     
+           00:08:40  C1Y0015I  STARTING PARSE OF REQUEST CARDS                                                                       
+                                                                                                                                     
+            STATEMENT #1                                                                                                             
+            GENERATE ELEMENT 'MARBLE01' FROM ENV 'SMPLTEST' SYS 'MARBLES' SUB                                                        
+            'MARBLES' TYP 'COBOL' STA NUM '1' OPTIONS CCID 'abcd' COMMENT                                                            
+            'test223' OVERRIDE SIGNOUT COPYBACK SEARCH .                                                                             
+                                                                                                                                     
+            STATEMENT #2                                                                                                             
+            EOF STATEMENT GENERATED                                                                                                  
+           00:08:40  C1Y0016I  REQUEST CARDS SUCCESSFULLY PARSED                                                                     
+                                                                                                                                     
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.         03MAR20 00:08:41     PAGE     1   
+                                           E N D E V O R   E X E C U T I O N   R E P O R T                                           
+ REQUESTED BY: KWOYO01                                                                                                               
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+           00:08:41  C1G0202I  ACTION #1 / STMT #1                                                                                   
+           00:08:41  C1G0203I     GENERATE ELEMENT MARBLE01                                                                          
+           00:08:41  C1G0204I        FROM ENVIRONMENT: SMPLTEST SYSTEM: MARBLES  SUBSYSTEM: MARBLES  TYPE: COBOL    STAGE ID: T      
+           00:08:41  C1G0232I        OPTIONS:  OVERRIDE SIGNOUT, COPYBACK, SEARCH                                                    
+           00:08:41  C1G0232I                  CCID: ABCD                                                                            
+           00:08:41  C1G0232I                  COMMENT: TEST223                                                                      
+           00:08:41  C1G0265I  PROCESSOR GROUP LEMC2 FOR THIS ELEMENT WAS OBTAINED FROM PRIMARY ELEMENT RECORD                       
+           00:08:41  C1G0143I  BEGINNING EXECUTION OF GENERATE PROCESSOR GCOBP OF GROUP LEMC2.                                       
+                                                                                                                                     
+                                                                                                                                     
+           00:08:41  C1G0246I  PROCESSOR GCOBP LOADED FROM CAAPJMF.ENDEVOR.SMPLPROD.PRCSLOAD                                         
+           00:08:41  C1G0247I    FOOTPRINT: ENV: SMPLPROD SYS: ADMIN SBS: PROCESS ELM: GCOBP TYPE: PROCESS STG NBR: 2                
+           00:08:41  C1G0248I               VER: 0104 DATE: 02MAR20 15:04                                                            
+                                                                                                                                     
+                     C1G0249I  //********************************************************************                                
+                     C1G0249I  //* GCOBP: Endevor processor for COBOL with PRECOMILER support                                        
+                     C1G0249I  //*        Every symbolic is more or less self explanatory.                                           
+                     C1G0249I  //*        See Type defn for COBPGM and related Pprocessor Groups.                                    
+                     C1G0249I  //*        Processor Group naming standard:  ccoed[zzz]                                               
+                     C1G0249I  //*          cc = Compiler                                                                            
+                     C1G0249I  //*            LE = LE version of standard IBM compiler                                               
+                     C1G0249I  //*            PR = Pre-LE version of standard IBM compiler                                           
+                     C1G0249I  //*            NI = Non-IBM compiler                                                                  
+                     C1G0249I  //*          o = Operating system                                                                     
+                     C1G0249I  //*            M = MVS                                                                                
+                     C1G0249I  //*            V = VM                                                                                 
+                     C1G0249I  //*            E = VSE                                                                                
+                     C1G0249I  //*          e = Environment                                                                          
+                     C1G0249I  //*            B = Batch or TSO environment                                                           
+                     C1G0249I  //*            C = CICS environment                                                                   
+                     C1G0249I  //*            I = IMS/DC environment                                                                 
+                     C1G0249I  //*            D = IDMS/DC environment                                                                
+                     C1G0249I  //*          d = Database requirement                                                                 
+                     C1G0249I  //*            X = No database required                                                               
+                     C1G0249I  //*            1 = Datacom database required (the preferred #1 db)                                    
+                     C1G0249I  //*            2 = DB2 database required (the db with a 2 in its name)                                
+                     C1G0249I  //*            3 = IMS database required (the db with a 3-char name)                                  
+                     C1G0249I  //*            4 = IDMS database required (the db with a 4-char name)                                 
+                     C1G0249I  //*          zzz = Unique requirements (blank if none)                                                
+                     C1G0249I  //********************************************************************                                
+                     C1G0249I  //GCOBP    PROC PARMA='APOST',                                                                        
+                     C1G0249I  //              PARMZ=,                                                                               
+                     C1G0249I  //              DB2='CCSID(500),APOST,APOSTSQL,SOURCE',                                               
+                     C1G0249I  //              PFX='&#BASEPRFX.',    Endevor dsname prefix                                           
+                     C1G0249I  //              EAPFX='&#EAPRFX',               EA prefix                                             
+                     C1G0249I  //              VIO='SYSDA',                UNIT= for utility data sets                               
+                     C1G0249I  //              IDMSDICT='R17IDMS',         Default IDMS dictionary                                   
+                     C1G0249I  //              MACLIB='SYS1.MACLIB',       z/OS SYS1.MACLIB                                          
+                     C1G0249I  //              MODGEN='SYS1.MODGEN',       z/OS SYS1.MODGEN                                          
+                     C1G0249I  //              XMACLIB1='SYS1.MACLIB',     External macro library                                    
+                     C1G0249I  //              XMACLIB2='SYS1.MACLIB',     External macro library                                    
+                     C1G0249I  //              CEEMAC='CEE.SCEEMAC',       z/OS cee macs                                             
+                     C1G0249I  //              SDSNLOAD='CAAPJMF.DB2C10.SDSNLOAD',  DB2                                              
+                     C1G0249I  //              SDSNMACS='CAAPJMF.DB2C10.SDSNMACS',  DB2                                              
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.         03MAR20 00:08:41     PAGE     2   
+                                           E N D E V O R   E X E C U T I O N   R E P O R T                                           
+ REQUESTED BY: KWOYO01                                                                                                               
+                                                                                                                                     
+                                                                                                                                     
+                     C1G0249I  //              SDSNEXIT='CAAPJMF.DB2C10.SDSNEXIT',  DB2                                              
+                     C1G0249I  //              SDFHLOAD='CAAPJMF.CICSTS.V5R4M0.CICS.SDFHLOAD',                                       
+                     C1G0249I  //              SDFHMAC='CAAPJMF.CICSTS.V5R4M0.CICS.SDFHMAC',                                         
+                     C1G0249I  //              CLECOMP='IGY.SIGYCOMP',     COBOL/LE compiler                                         
+                     C1G0249I  //              CLERUN='CEE.SCEERUN',       COBOL/LE runtime                                          
+                     C1G0249I  //              CIICOMP='IBMPROD.V1R4M0.COB2COMP', COBOL/II compiler                                  
+                     C1G0249I  //              CIILIB='IBMPROD.V1R4M0.COB2LIB',   COBOL/II runtime                                   
+                     C1G0249I  //              SEQLIST='N'                 Create sequential listing                                 
+                     C1G0249I  //*====================================================================                               
+                     C1G0249I  //*        Allocate the output listing data sets                                                      
+                     C1G0249I  //*====================================================================                               
+                     C1G0249I  //INITLIST EXEC PGM=BC1PDSIN                                                                          
+                     C1G0249I  //C1INIT01 DD   DSN=&&COBLST,DISP=(,PASS),                                                            
+                     C1G0249I  //              SPACE=(CYL,(5,5)),                                                                    
+                     C1G0249I  //              DCB=(RECFM=FBA,LRECL=133,DSORG=PS)                                                    
+                     C1G0249I  //C1INIT02 DD   DSN=&&COBTRM,DISP=(,PASS),                                                            
+                     C1G0249I  //              SPACE=(CYL,(5,5)),                                                                    
+                     C1G0249I  //              DCB=(RECFM=FBA,LRECL=133,DSORG=PS)                                                    
+                     C1G0249I  //C1INIT03 DD   DSN=&&DB2PLST,DISP=(,PASS),                                                           
+                     C1G0249I  //              SPACE=(CYL,(5,5)),                                                                    
+                     C1G0249I  //              DCB=(RECFM=FBA,LRECL=133,DSORG=PS)                                                    
+                     C1G0249I  //C1INIT05 DD   DSN=&&IDMPLST,DISP=(,PASS),                                                           
+                     C1G0249I  //              SPACE=(CYL,(5,5)),                                                                    
+                     C1G0249I  //              DCB=(RECFM=FBA,LRECL=133,DSORG=PS)                                                    
+                     C1G0249I  //C1INIT06 DD   DSN=&&LNKLST,DISP=(,PASS),                                                            
+                     C1G0249I  //              SPACE=(CYL,(2,1)),                                                                    
+                     C1G0249I  //              DCB=(RECFM=FBA,LRECL=121,BLKSIZE=1210,DSORG=PS)                                       
+                     C1G0249I  //C1INIT07 DD   DSN=&&COBOBJ,DISP=(,PASS),                                                            
+                     C1G0249I  //              SPACE=(CYL,(2,1)),                                                                    
+                     C1G0249I  //              DCB=(RECFM=FB,LRECL=80,BLKSIZE=3120,DSORG=PS)                                         
+                     C1G0249I  //*====================================================================                               
+                     C1G0249I  //*        Check if preprocessors needed                                                              
+                     C1G0249I  //*====================================================================                               
+                     C1G0249I  //IFPRE IF '&C1PRGRP' NE 'LEMCX' THEN                                                                 
+                     C1G0249I  //*                                                                                                   
+                     C1G0249I  //*       ----- START OF PRE COMPILER LOGIC ------                                                    
+                     C1G0249I  //*                                                                                                   
+                     C1G0249I  //**********************************************************************                              
+                     C1G0249I  //*    DB2 PRECOMPILIER PROCESSING -  LEM?2                                                           
+                     C1G0249I  //*********************************************************************                               
+                     C1G0249I  //*B2PRE   EXEC PGM=DSNHPC,PARM='HOST(COBOL)',                                                        
+                     C1G0249I  //*B2PRE   EXEC PGM=DSNHPC,PARM='HOST(COB2),SOURCE,APOSTSQL,QUOTE',                                   
+                     C1G0249I  //DB2PRE   EXEC PGM=DSNHPC,PARM='&DB2',                                                               
+                     C1G0249I  //            COND=(0,LT),MAXRC=4,                                                                    
+                     C1G0249I  //            EXECIF=(&C1PRGRP(5,1),EQ,2)                                                             
+                     C1G0249I  //STEPLIB   DD DSN=&SDSNEXIT,DISP=SHR                                                                 
+                     C1G0249I  //          DD DSN=&SDSNLOAD,DISP=SHR                                                                 
+                     C1G0249I  //DBRMLIB   DD DSN=&&DBRMOUT(&C1ELEMENT),DISP=(,PASS),                                                
+                     C1G0249I  //             UNIT=&VIO,SPACE=(CYL,(1,1,5),RLSE),                                                    
+                     C1G0249I  //             DCB=(RECFM=FB,LRECL=80,BLKSIZE=6160)                                                   
+                     C1G0249I  //SYSIN     DD DSN=&C1BASELIB(&C1ELEMENT),DISP=SHR,MONITOR=COMPONENTS                                 
+                     C1G0249I  //SYSCIN    DD DSN=&&DB2OUT,DISP=(,PASS),                                                             
+                     C1G0249I  //             UNIT=&VIO,SPACE=(CYL,(1,2)),                                                           
+                     C1G0249I  //             DCB=(RECFM=FB,LRECL=80,BLKSIZE=6160)                                                   
+                     C1G0249I  //SYSLIB    DD DSN=&SDSNMACS,DISP=SHR                                                                 
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.         03MAR20 00:08:41     PAGE     3   
+                                           E N D E V O R   E X E C U T I O N   R E P O R T                                           
+ REQUESTED BY: KWOYO01                                                                                                               
+                                                                                                                                     
+                                                                                                                                     
+                     C1G0249I  //SYSTERM   DD SYSOUT=*                                                                               
+                     C1G0249I  //SYSPRINT  DD DSN=&&DB2PLST,DISP=(OLD,PASS)                                                          
+                     C1G0249I  //SYSUT1    DD UNIT=&VIO,SPACE=(CYL,(1,1))                                                            
+                     C1G0249I  //SYSUT2    DD UNIT=&VIO,SPACE=(CYL,(1,1))                                                            
+                     C1G0249I  //**********************************************************************                              
+                     C1G0249I  //*   GENR IF DB2 PRE NOT EXECUTED                                                                    
+                     C1G0249I  //*********************************************************************                               
+                     C1G0249I  //DB2GENR  EXEC PGM=IEBGENER,                                                                         
+                     C1G0249I  //            EXECIF=('&C1PRGRP(5,1)',NE,'2')                                                         
+                     C1G0249I  //SYSPRINT DD  DUMMY                                                                                  
+                     C1G0249I  //SYSIN    DD  DUMMY,DCB=BLKSIZE=80                                                                   
+                     C1G0249I  //SYSUT1   DD  DSN=&C1BASELIB(&C1ELEMENT),DISP=SHR,MONITOR=COMPONENTS                                 
+                     C1G0249I  //SYSUT2   DD  DSN=&&DB2OUT,DISP=(,PASS),                                                             
+                     C1G0249I  //             UNIT=&VIO,SPACE=(CYL,(1,2)),                                                           
+                     C1G0249I  //             DCB=(RECFM=FB,LRECL=80,BLKSIZE=6160)                                                   
+                     C1G0249I  //**********************************************************************                              
+                     C1G0249I  //*   CICS PRECOMPILIER PROCESSING  LEMC? FOR COBOL                                                   
+                     C1G0249I  //*********************************************************************                               
+                     C1G0249I  //CICSPRE  EXEC PGM=DFHECP1$,PARM='COBOL2',                                                           
+                     C1G0249I  //            MAXRC=4,                                                                                
+                     C1G0249I  //            EXECIF=('&C1PRGRP(4,1)',EQ,'C'),                                                        
+                     C1G0249I  //            COND=(5,LT,DB2PRE)                                                                      
+                     C1G0249I  //STEPLIB  DD  DSN=&SDFHLOAD,DISP=SHR                                                                 
+                     C1G0249I  //*--------------------------------------------------------------------                               
+                     C1G0249I  //*        STEPLIB to requested cobol version                                                         
+                     C1G0249I  //*--------------------------------------------------------------------                               
+                     C1G0249I  //       IF ('&C1PRGRP(1,2)' EQ 'LE') THEN                                                            
+                     C1G0249I  //         DD   DSN=&CLECOMP,DISP=SHR       COBOL/LE compiler library                                 
+                     C1G0249I  //         DD   DSN=&CLERUN,DISP=SHR        COBOL/LE runtime library                                  
+                     C1G0249I  //       ENDIF                                                                                        
+                     C1G0249I  //       IF ('&C1PRGRP(1,2)' EQ 'PR') THEN                                                            
+                     C1G0249I  //         DD   DSN=&CIICOMP,DISP=SHR       COBOL/II compiler library                                 
+                     C1G0249I  //         DD   DSN=&CIILIB,DISP=SHR        COBOL/II runtime library                                  
+                     C1G0249I  //       ENDIF                                                                                        
+                     C1G0249I  //SYSPRINT DD  SYSOUT=*                                                                               
+                     C1G0249I  //SYSIN    DD  DSN=&&DB2OUT,                                                                          
+                     C1G0249I  //             DISP=(OLD,DELETE,DELETE)                                                               
+                     C1G0249I  //SYSPUNCH DD  DSN=&&CICSOUT,                                                                         
+                     C1G0249I  //             UNIT=&VIO,                                                                             
+                     C1G0249I  //             DISP=(NEW,PASS),                                                                       
+                     C1G0249I  //             DCB=BLKSIZE=400,                                                                       
+                     C1G0249I  //             SPACE=(CYL,(1,2))                                                                      
+                     C1G0249I  //**********************************************************************                              
+                     C1G0249I  //*   GENR IF CICS PRE NOT EXECUTED                                                                   
+                     C1G0249I  //*********************************************************************                               
+                     C1G0249I  //CICGENR EXEC PGM=IEBGENER,                                                                          
+                     C1G0249I  //            EXECIF=('&C1PRGRP(4,1)',NE,'C')                                                         
+                     C1G0249I  //SYSPRINT DD  DUMMY                                                                                  
+                     C1G0249I  //SYSIN    DD  DUMMY,DCB=BLKSIZE=80                                                                   
+                     C1G0249I  //SYSUT1   DD  DSN=&&DB2OUT,DISP=(OLD,DELETE)                                                         
+                     C1G0249I  //SYSUT2   DD  DSN=&&CICSOUT,DISP=(,PASS),                                                            
+                     C1G0249I  //             UNIT=&VIO,SPACE=(CYL,(1,2)),                                                           
+                     C1G0249I  //             DCB=(RECFM=FB,LRECL=80,BLKSIZE=6160)                                                   
+                     C1G0249I  //***********************************************                                                     
+                     C1G0249I  //*  IDMS PRECOMPILER PROCESSING - LEM?4                                                              
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.         03MAR20 00:08:41     PAGE     4   
+                                           E N D E V O R   E X E C U T I O N   R E P O R T                                           
+ REQUESTED BY: KWOYO01                                                                                                               
+                                                                                                                                     
+                                                                                                                                     
+                     C1G0249I  //***********************************************                                                     
+                     C1G0249I  //IDMSPRE  EXEC PGM=IDMSDMLA,MAXRC=4,                                                                 
+                     C1G0249I  //            EXECIF=('&C1PRGRP(5,1)',EQ,'4')                                                         
+                     C1G0249I  //STEPLIB   DD DSN=DBDC.SYSTEM79.DBA.LOADLIB,DISP=SHR                                                 
+                     C1G0249I  //          DD DSN=DIST.CAABG0.PRODTGT.CABG0LLT,DISP=SHR                                              
+                     C1G0249I  //          DD DSN=DIST.CAGJG0.PRODTGT.LOADLIB,DISP=SHR                                               
+                     C1G0249I  //*         DD DSN=&IDMSLOD,DISP=SHR                                                                  
+                     C1G0249I  //SYSLST    DD DSN=&&IDMPLST,DISP=(OLD,PASS)                                                          
+                     C1G0249I  //SYSJRNL   DD DUMMY                                                                                  
+                     C1G0249I  //J1JRNL    DD DUMMY                                                                                  
+                     C1G0249I  //J2JRNL    DD DUMMY                                                                                  
+                     C1G0249I  //SYS001    DD UNIT=&VIO,SPACE=(TRK,(15,10))                                                          
+                     C1G0249I  //SYS002    DD UNIT=&VIO,SPACE=(TRK,(15,10))                                                          
+                     C1G0249I  //SYS003    DD UNIT=&VIO,SPACE=(TRK,(15,10))                                                          
+                     C1G0249I  //SYSPCH    DD DSN=&&IDMSOUT,DISP=(NEW,PASS),UNIT=&VIO,                                               
+                     C1G0249I  //             SPACE=(CYL,(2,1)),                                                                     
+                     C1G0249I  //             DCB=(RECFM=FB,LRECL=80,BLKSIZE=9040)                                                   
+                     C1G0249I  //SYSIDMS  DD *                                                                                       
+                     C1G0249I  DMCL=S79DMCL                                                                                          
+                     C1G0249I  DICTNAME=&IDMSDICT                                                                                    
+                     C1G0249I  /*                                                                                                    
+                     C1G0249I  //SYSIPT   DD *                                                                                       
+                     C1G0249I  *RETRIEVAL                                                                                            
+                     C1G0249I  *NO-ACTIVITY-LOG                                                                                      
+                     C1G0249I  *SCHEMA-COMMENTS                                                                                      
+                     C1G0249I  //          DD DSN=&&CICSOUT,DISP=(OLD,DELETE)                                                        
+                     C1G0249I  //*******************************************************                                             
+                     C1G0249I  //* COPY ELMOUT TO PREOUT IF PREPROCSSOR WASN'T EXECUTED                                              
+                     C1G0249I  //*******************************************************                                             
+                     C1G0249I  //IDMGENR   EXEC PGM=IEBGENER,                                                                        
+                     C1G0249I  //            EXECIF=('&C1PRGRP(5,1)',NE,'4')                                                         
+                     C1G0249I  //SYSUT1   DD  DSN=&&CICSOUT,DISP=(OLD,DELETE)                                                        
+                     C1G0249I  //SYSUT2   DD  DSN=&&IDMSOUT,DISP=(NEW,PASS),                                                         
+                     C1G0249I  //             SPACE=(CYL,(1,1)),UNIT=&VIO,                                                           
+                     C1G0249I  //             DCB=(RECFM=FB,LRECL=80,BLKSIZE=3120)                                                   
+                     C1G0249I  //SYSIN    DD  DUMMY,DCB=BLKSIZE=80                                                                   
+                     C1G0249I  //SYSPRINT DD  SYSOUT=*                                                                               
+                     C1G0249I  //*                                                                                                   
+                     C1G0249I  //IFPRE ENDIF    --- END OF PRE PROCESSOR LOGIC ----                                                  
+                     C1G0249I  //*                                                                                                   
+                     C1G0249I  //*====================================================================                               
+                     C1G0249I  //*        Call compiler and pass options via CONPARMX -                                              
+                     C1G0249I  //*====================================================================                               
+                     C1G0249I  //*PARM=(compiler,     Program to be run -1-                                                          
+                     C1G0249I  //*      '(&PARMA)', Values from &PARMA Symbolic -2-                                                  
+                     C1G0249I  //*      $$$$DFLT,   Default System Level Options element -3-                                         
+                     C1G0249I  //*      &C1PRGRP,   Processor Group Level Options element -4-                                        
+                     C1G0249I  //*      &C1ELEMENT, Individual Element Level Options  -5-                                            
+                     C1G0249I  //*      '(&PARMZ)', Values from &PARMZ Symbolic -6-                                                  
+                     C1G0249I  //*      Y,          Concatenate parms a to z -7-                                                     
+                     C1G0249I  //*      N)          Build option file to pass or invoke program -8-                                  
+                     C1G0249I  //*  Last option entry in string takes precsedence with compilers                                     
+                     C1G0249I  //*                                                                                                   
+                     C1G0249I  //*====================================================================                               
+                     C1G0249I  //*        Invoke the Compiler                                                                        
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.         03MAR20 00:08:41     PAGE     5   
+                                           E N D E V O R   E X E C U T I O N   R E P O R T                                           
+ REQUESTED BY: KWOYO01                                                                                                               
+                                                                                                                                     
+                                                                                                                                     
+                     C1G0249I  //*    PARM=(NOSEQUENCE,QUOTE,RENT,'PGMNAME(LONGUPPER)'),                                             
+                     C1G0249I  //*====================================================================                               
+                     C1G0249I  //COMPILE  EXEC PGM=CONPARMX,COND=(0,NE,INITLIST),MAXRC=4,                                            
+                     C1G0249I  //             PARM=(IGYCRCTL,'(&PARMA)',&C1PRGRP,&C1PRGRP,                                           
+                     C1G0249I  //                   &C1ELEMENT,'(&PARMZ)','Y','N')                                                   
+                     C1G0249I  //*                                                                                                   
+                     C1G0249I  //*PARMSDEF DD DISP=SHR,DSN=&EAPFX...PARMLIB,                                                         
+                     C1G0249I  //PARMSDEF DD DISP=SHR,DSN=CAAPJMF.ENDEVOR.SMPL.PARMLIB,                                              
+                     C1G0249I  //         MONITOR=COMPONENTS,ALLOC=PMAP                                                              
+                     C1G0249I  //*                                                                                                   
+                     C1G0249I  //*--------------------------------------------------------------------                               
+                     C1G0249I  //*        STEPLIB to requested compiler library                                                      
+                     C1G0249I  //*--------------------------------------------------------------------                               
+                     C1G0249I  //       IF ('&C1PRGRP(1,2)' EQ 'LE') THEN                                                            
+                     C1G0249I  //STEPLIB  DD   DSN=&CLECOMP,DISP=SHR       COBOL/LE compiler library                                 
+                     C1G0249I  //         DD   DSN=&CLERUN,DISP=SHR        COBOL/LE runtime library                                  
+                     C1G0249I  //       ENDIF                                                                                        
+                     C1G0249I  //       IF ('&C1PRGRP(1,2)' EQ 'PR') THEN                                                            
+                     C1G0249I  //STEPLIB  DD   DSN=&CIICOMP,DISP=SHR       COBOL/II compiler library                                 
+                     C1G0249I  //         DD   DSN=&CIILIB,DISP=SHR        COBOL/II runtime library                                  
+                     C1G0249I  //       ENDIF                                                                                        
+                     C1G0249I  //*--------------------------------------------------------------------                               
+                     C1G0249I  //*                                                                                                   
+                     C1G0249I  //*--------------------------------------------------------------------                               
+                     C1G0249I  //*        Expand libraries needed by cobol .                                                         
+                     C1G0249I  //*!!!!!!! SYSLIB DD is last; can add to concatenation list inline !!!!                               
+                     C1G0249I  //*--------------------------------------------------------------------                               
+                     C1G0249I  //*SYSLIB   DD   DSN=&PFX..COBCOPY,    haopi01                                                        
+                     C1G0249I  //*              DISP=SHR,MONITOR=COMPONENTS,ALLOC=PMAP  haopi01                                      
+                     C1G0249I  //*------------------------------------------------------------------                                 
+                     C1G0249I  //*        If any precompilers ran then different SYSIN                                               
+                     C1G0249I  //*------------------------------------------------------------------                                 
+                     C1G0249I  //IFPRE  IF IDMGENR.RUN THEN                                                                          
+                     C1G0249I  //SYSIN    DD   DSN=&&IDMSOUT,DISP=SHR,MONITOR=COMPONENTS                                             
+                     C1G0249I  // ELSE                                                                                               
+                     C1G0249I  //SYSIN    DD   DSN=&C1BASELIB(&C1ELEMENT),DISP=SHR,MONITOR=COMPONENTS                                
+                     C1G0249I  //ENDPRE   ENDIF                                                                                      
+                     C1G0249I  //*------------------------------------------------------------------                                 
+                     C1G0249I  //SYSLIN   DD   DSN=&&SYSLIN,DISP=(,PASS,DELETE),                                                     
+                     C1G0249I  //              UNIT=&VIO,SPACE=(CYL,(3,5),RLSE),                                                     
+                     C1G0249I  //              DCB=(RECFM=FB,LRECL=80,BLKSIZE=3120,DSORG=PS),                                        
+                     C1G0249I  //              FOOTPRNT=CREATE                                                                       
+                     C1G0249I  //SYSPUNCH DD   DUMMY                                                                                 
+                     C1G0249I  //SYSUT1   DD   UNIT=&VIO,SPACE=(CYL,(5,3)),DCB=BLKSIZE=32760                                         
+                     C1G0249I  //SYSUT2   DD   UNIT=&VIO,SPACE=(CYL,(5,3))                                                           
+                     C1G0249I  //SYSUT3   DD   UNIT=&VIO,SPACE=(CYL,(5,3))                                                           
+                     C1G0249I  //SYSUT4   DD   UNIT=&VIO,SPACE=(CYL,(5,3))                                                           
+                     C1G0249I  //SYSUT5   DD   UNIT=&VIO,SPACE=(CYL,(5,3))                                                           
+                     C1G0249I  //SYSUT6   DD   UNIT=&VIO,SPACE=(CYL,(5,3))                                                           
+                     C1G0249I  //SYSUT7   DD   UNIT=&VIO,SPACE=(CYL,(5,3))                                                           
+                     C1G0249I  //SYSPRINT DD   DSN=&&COBLST,DISP=(OLD,PASS)                                                          
+                     C1G0249I  //SYSTERM  DD   DSN=&&COBTRM,DISP=(OLD,PASS)                                                          
+                     C1G0249I  //*====================================================================                               
+                     C1G0249I  //*        Copy DBRM if compile okay                                                                  
+                     C1G0249I  //*====================================================================                               
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.         03MAR20 00:08:41     PAGE     6   
+                                           E N D E V O R   E X E C U T I O N   R E P O R T                                           
+ REQUESTED BY: KWOYO01                                                                                                               
+                                                                                                                                     
+                                                                                                                                     
+                     C1G0249I  //IFDB2    IF  ('&C1PRGRP(5,1)' EQ '2') THEN                                                          
+                     C1G0249I  //DBRMCOPY  EXEC PGM=IEBGENER,COND=(4,LT)                                                             
+                     C1G0249I  //SYSPRINT DD   DUMMY                                                                                 
+                     C1G0249I  //SYSUT1   DD   DSN=&&DBRMOUT(&C1ELEMENT),DISP=(OLD,DELETE)                                           
+                     C1G0249I  //SYSUT2   DD   DISP=OLD,MONITOR=COMPONENTS,FOOTPRNT=CREATE,                                          
+                     C1G0249I  //*             DSN=&PFX..DBRMLIB(&C1ELEMENT.)  haopi01                                               
+                     C1G0249I  //              DSN=KWOYO01.MARBLES.DBRMLIB(&C1ELEMENT.)                                              
+                     C1G0249I  //SYSIN    DD   DUMMY                                                                                 
+                     C1G0249I  //IFDB2    ENDIF                                                                                      
+                     C1G0249I  //*====================================================================                               
+                     C1G0249I  //*        Copy object to .OBJLIB data set                                                            
+                     C1G0249I  //*====================================================================                               
+                     C1G0249I  //OBJCOPY  EXEC PGM=IEBGENER,COND=(4,LT)                                                              
+                     C1G0249I  //SYSPRINT DD   DUMMY                                                                                 
+                     C1G0249I  //SYSUT1   DD   DSN=&&SYSLIN,DISP=(OLD,DELETE)                                                        
+                     C1G0249I  //SYSUT2   DD   DISP=OLD,MONITOR=COMPONENTS,FOOTPRNT=CREATE,                                          
+                     C1G0249I  //*             DSN=&PFX..OBJLIB(&C1ELEMENT.)  haopi01                                                
+                     C1G0249I  //              DSN=KWOYO01.MARBLES.OBJECT(&C1ELEMENT.)                                               
+                     C1G0249I  //SYSIN    DD   DUMMY                                                                                 
+                     C1G0249I  //*                                                                                                   
+                     C1G0249I  //*====================================================================                               
+                     C1G0249I  //*        Copy listing to .LISTLIB data set                                                          
+                     C1G0249I  //*====================================================================                               
+                     C1G0249I  //CONLIST  EXEC PGM=CONLIST,PARM=STORE,MAXRC=0,COND=EVEN                                              
+                     C1G0249I  //*C1LLIBO  DD   DSN=&PFX..LISTLIB,  haopi01                                                          
+                     C1G0249I  //C1LLIBO  DD   DSN=KWOYO01.MARBLES.LISTING,                                                          
+                     C1G0249I  //              DISP=OLD,MONITOR=COMPONENTS,FOOTPRNT=CREATE                                           
+                     C1G0249I  //C1BANNER DD   UNIT=&VIO,SPACE=(TRK,(1,1)),                                                          
+                     C1G0249I  //              DCB=(RECFM=FBA,LRECL=121,BLKSIZE=6171,DSORG=PS)                                       
+                     C1G0249I  //LIST01   DD   DSN=&&DB2PLST,DISP=(OLD,DELETE)                                                       
+                     C1G0249I  //LIST02   DD   DSN=&&COBTRM,DISP=(OLD,DELETE)                                                        
+                     C1G0249I  //LIST03   DD   DSN=&&COBLST,DISP=(OLD,DELETE)                                                        
+                     C1G0249I  //*                                                                                                   
+                                                                                                                                     
+           00:08:41  C1G0006I  SYMBOLIC SUBSTITUTION:                                                                                
+           00:08:41  C1G0007I    SYMBOLIC CEEMAC DEFINED BY PROCESSOR: CEE.SCEEMAC                                                   
+           00:08:41  C1G0007I    SYMBOLIC CIICOMP DEFINED BY PROCESSOR: IBMPROD.V1R4M0.COB2COMP                                      
+           00:08:41  C1G0007I    SYMBOLIC CIILIB DEFINED BY PROCESSOR: IBMPROD.V1R4M0.COB2LIB                                        
+           00:08:41  C1G0007I    SYMBOLIC CLECOMP DEFINED BY PROCESSOR: IGY.SIGYCOMP                                                 
+           00:08:41  C1G0007I    SYMBOLIC CLERUN DEFINED BY PROCESSOR: CEE.SCEERUN                                                   
+           00:08:41  C1G0007I    SYMBOLIC DB2 DEFINED BY PROCESSOR: CCSID(500),APOST,APOSTSQL,SOURCE                                 
+           00:08:41  C1G0007I    SYMBOLIC EAPFX DEFINED BY PROCESSOR: &#EAPRFX                                                       
+           00:08:41  C1G0007I    SYMBOLIC IDMSDICT DEFINED BY PROCESSOR: R17IDMS                                                     
+           00:08:41  C1G0007I    SYMBOLIC MACLIB DEFINED BY PROCESSOR: SYS1.MACLIB                                                   
+           00:08:41  C1G0007I    SYMBOLIC MODGEN DEFINED BY PROCESSOR: SYS1.MODGEN                                                   
+           00:08:41  C1G0007I    SYMBOLIC PARMA DEFINED BY PROCESSOR: APOST                                                          
+           00:08:41  C1G0007I    SYMBOLIC PARMZ DEFINED BY PROCESSOR:                                                                
+           00:08:41  C1G0007I    SYMBOLIC PFX DEFINED BY PROCESSOR: &#BASEPRFX.                                                      
+           00:08:41  C1G0007I    SYMBOLIC SDFHLOAD DEFINED BY PROCESSOR: CAAPJMF.CICSTS.V5R4M0.CICS.SDFHLOAD                         
+           00:08:41  C1G0007I    SYMBOLIC SDFHMAC DEFINED BY PROCESSOR: CAAPJMF.CICSTS.V5R4M0.CICS.SDFHMAC                           
+           00:08:41  C1G0007I    SYMBOLIC SDSNEXIT DEFINED BY PROCESSOR: CAAPJMF.DB2C10.SDSNEXIT                                     
+           00:08:41  C1G0007I    SYMBOLIC SDSNLOAD DEFINED BY PROCESSOR: CAAPJMF.DB2C10.SDSNLOAD                                     
+           00:08:41  C1G0007I    SYMBOLIC SDSNMACS DEFINED BY PROCESSOR: CAAPJMF.DB2C10.SDSNMACS                                     
+           00:08:41  C1G0007I    SYMBOLIC SEQLIST DEFINED BY PROCESSOR: N                                                            
+           00:08:41  C1G0007I    SYMBOLIC VIO DEFINED BY PROCESSOR: SYSDA                                                            
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.         03MAR20 00:08:41     PAGE     7   
+                                           E N D E V O R   E X E C U T I O N   R E P O R T                                           
+ REQUESTED BY: KWOYO01                                                                                                               
+                                                                                                                                     
+                                                                                                                                     
+           00:08:41  C1G0007I    SYMBOLIC XMACLIB1 DEFINED BY PROCESSOR: SYS1.MACLIB                                                 
+           00:08:41  C1G0007I    SYMBOLIC XMACLIB2 DEFINED BY PROCESSOR: SYS1.MACLIB                                                 
+           00:08:41  C1G0011I    PROCESSOR SYMBOLIC SUBSTITUTION OCCURRED -                                                          
+                     C1G0009I      ORIGINAL    : &DB2                                                                                
+                     C1G0009I      SUBSTITUTED : CCSID(500),APOST,APOSTSQL,SOURCE                                                    
+                     C1G0009I      ORIGINAL    : &C1PRGRP                                                                            
+                     C1G0009I      SUBSTITUTED : LEMC2                                                                               
+                     C1G0009I      ORIGINAL    : &C1PRGRP(5,1)                                                                       
+                     C1G0009I      SUBSTITUTED : 2                                                                                   
+                     C1G0009I      ORIGINAL    : &SDSNEXIT                                                                           
+                     C1G0009I      SUBSTITUTED : CAAPJMF.DB2C10.SDSNEXIT                                                             
+                     C1G0009I      ORIGINAL    : &SDSNLOAD                                                                           
+                     C1G0009I      SUBSTITUTED : CAAPJMF.DB2C10.SDSNLOAD                                                             
+                     C1G0009I      ORIGINAL    : &C1ELEMENT                                                                          
+                     C1G0009I      SUBSTITUTED : MARBLE01                                                                            
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : &C1BASELIB                                                                          
+                     C1G0009I      SUBSTITUTED : KWOYO01.MARBLES.COBOL2                                                              
+                     C1G0009I      ORIGINAL    : &C1ELEMENT                                                                          
+                     C1G0009I      SUBSTITUTED : MARBLE01                                                                            
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : &SDSNMACS                                                                           
+                     C1G0009I      SUBSTITUTED : CAAPJMF.DB2C10.SDSNMACS                                                             
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : &C1PRGRP(5,1)                                                                       
+                     C1G0009I      SUBSTITUTED : 2                                                                                   
+                     C1G0009I      ORIGINAL    : &C1BASELIB                                                                          
+                     C1G0009I      SUBSTITUTED : KWOYO01.MARBLES.COBOL2                                                              
+                     C1G0009I      ORIGINAL    : &C1ELEMENT                                                                          
+                     C1G0009I      SUBSTITUTED : MARBLE01                                                                            
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : &C1PRGRP(4,1)                                                                       
+                     C1G0009I      SUBSTITUTED : C                                                                                   
+                     C1G0009I      ORIGINAL    : &SDFHLOAD                                                                           
+                     C1G0009I      SUBSTITUTED : CAAPJMF.CICSTS.V5R4M0.CICS.SDFHLOAD                                                 
+                     C1G0009I      ORIGINAL    : &CLECOMP                                                                            
+                     C1G0009I      SUBSTITUTED : IGY.SIGYCOMP                                                                        
+                     C1G0009I      ORIGINAL    : &C1PRGRP(1,2)                                                                       
+                     C1G0009I      SUBSTITUTED : LE                                                                                  
+                     C1G0009I      ORIGINAL    : &CLERUN                                                                             
+                     C1G0009I      SUBSTITUTED : CEE.SCEERUN                                                                         
+                     C1G0009I      ORIGINAL    : &CIICOMP                                                                            
+                     C1G0009I      SUBSTITUTED : IBMPROD.V1R4M0.COB2COMP                                                             
+                     C1G0009I      ORIGINAL    : &C1PRGRP(1,2)                                                                       
+                     C1G0009I      SUBSTITUTED : LE                                                                                  
+                     C1G0009I      ORIGINAL    : &CIILIB                                                                             
+                     C1G0009I      SUBSTITUTED : IBMPROD.V1R4M0.COB2LIB                                                              
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.         03MAR20 00:08:41     PAGE     8   
+                                           E N D E V O R   E X E C U T I O N   R E P O R T                                           
+ REQUESTED BY: KWOYO01                                                                                                               
+                                                                                                                                     
+                                                                                                                                     
+                     C1G0009I      ORIGINAL    : &C1PRGRP(4,1)                                                                       
+                     C1G0009I      SUBSTITUTED : C                                                                                   
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : &C1PRGRP(5,1)                                                                       
+                     C1G0009I      SUBSTITUTED : 2                                                                                   
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : &&C1VIOUNIT                                                                         
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : DICTNAME=&IDMSDICT                                                                  
+                     C1G0009I      SUBSTITUTED : DICTNAME=R17IDMS                                                                    
+                     C1G0009I      ORIGINAL    : &&C1VIOUNIT                                                                         
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : &C1PRGRP(5,1)                                                                       
+                     C1G0009I      SUBSTITUTED : 2                                                                                   
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : IGYCRCTL,(&PARMA),&C1PRGRP,&C1PRGRP,&C1ELEMENT,(&PARMZ),Y,N                         
+                     C1G0009I      SUBSTITUTED : IGYCRCTL,(APOST),LEMC2,LEMC2,MARBLE01,(),Y,N                                        
+                     C1G0009I      ORIGINAL    : &C1PRGRP(1,2)                                                                       
+                     C1G0009I      SUBSTITUTED : LE                                                                                  
+                     C1G0009I      ORIGINAL    : &CLECOMP                                                                            
+                     C1G0009I      SUBSTITUTED : IGY.SIGYCOMP                                                                        
+                     C1G0009I      ORIGINAL    : &CLERUN                                                                             
+                     C1G0009I      SUBSTITUTED : CEE.SCEERUN                                                                         
+                     C1G0009I      ORIGINAL    : &C1PRGRP(1,2)                                                                       
+                     C1G0009I      SUBSTITUTED : LE                                                                                  
+                     C1G0009I      ORIGINAL    : &CIICOMP                                                                            
+                     C1G0009I      SUBSTITUTED : IBMPROD.V1R4M0.COB2COMP                                                             
+                     C1G0009I      ORIGINAL    : &CIILIB                                                                             
+                     C1G0009I      SUBSTITUTED : IBMPROD.V1R4M0.COB2LIB                                                              
+                     C1G0009I      ORIGINAL    : &C1BASELIB                                                                          
+                     C1G0009I      SUBSTITUTED : KWOYO01.MARBLES.COBOL2                                                              
+                     C1G0009I      ORIGINAL    : &C1ELEMENT                                                                          
+                     C1G0009I      SUBSTITUTED : MARBLE01                                                                            
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.         03MAR20 00:08:41     PAGE     9   
+                                           E N D E V O R   E X E C U T I O N   R E P O R T                                           
+ REQUESTED BY: KWOYO01                                                                                                               
+                                                                                                                                     
+                                                                                                                                     
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+                     C1G0009I      ORIGINAL    : &C1PRGRP(5,1)                                                                       
+                     C1G0009I      SUBSTITUTED : 2                                                                                   
+                     C1G0009I      ORIGINAL    : &C1ELEMENT                                                                          
+                     C1G0009I      SUBSTITUTED : MARBLE01                                                                            
+                     C1G0009I      ORIGINAL    : &C1ELEMENT.                                                                         
+                     C1G0009I      SUBSTITUTED : MARBLE01                                                                            
+                     C1G0009I      ORIGINAL    : &C1ELEMENT.                                                                         
+                     C1G0009I      SUBSTITUTED : MARBLE01                                                                            
+                     C1G0009I      ORIGINAL    : &VIO                                                                                
+                     C1G0009I      SUBSTITUTED : SYSDA                                                                               
+           00:08:41  C1X0012I  STEP INITLIST INVOKING PROGRAM BC1PDSIN                                                               
+           00:08:41  C1X0010I  STEP INITLIST PROGRAM BC1PDSIN COMPLETED, RC=0000                                                     
+           00:08:41  C1X0012I  STEP DB2PRE INVOKING PROGRAM DSNHPC                                                                   
+           00:08:41  C1X0013I  PARM=CCSID(500),APOST,APOSTSQL,SOURCE                                                                 
+           00:08:41  C1X0010I  STEP DB2PRE PROGRAM DSNHPC COMPLETED, RC=0004                                                         
+           00:08:41  C1X0015I  STEP 0003 (DB2GENR) NOT EXECUTED BECAUSE OF AN "EXECIF" CLAUSE                                        
+           00:08:41  C1X0012I  STEP CICSPRE INVOKING PROGRAM DFHECP1$                                                                
+           00:08:41  C1X0013I  PARM=COBOL2                                                                                           
+           00:08:41  C1X0010I  STEP CICSPRE PROGRAM DFHECP1$ COMPLETED, RC=0000                                                      
+           00:08:41  C1X0015I  STEP 0005 (CICGENR) NOT EXECUTED BECAUSE OF AN "EXECIF" CLAUSE                                        
+           00:08:41  C1X0015I  STEP 0006 (IDMSPRE) NOT EXECUTED BECAUSE OF AN "EXECIF" CLAUSE                                        
+           00:08:41  C1X0012I  STEP IDMGENR INVOKING PROGRAM IEBGENER                                                                
+           00:08:41  C1X0010I  STEP IDMGENR PROGRAM IEBGENER COMPLETED, RC=0000                                                      
+           00:08:41  C1X0012I  STEP COMPILE INVOKING PROGRAM CONPARMX                                                                
+           00:08:41  C1X0013I  PARM=IGYCRCTL,(APOST),LEMC2,LEMC2,MARBLE01,(),Y,N                                                     
+           00:08:41  C1X0010I  STEP COMPILE PROGRAM CONPARMX COMPLETED, RC=0000                                                      
+           00:08:41  C1G0000I     ELEMENT MARBLE01                                                                                   
+           00:08:41  C1G0000I     DATA SET SYS20063.T000841.RA000.WSEWSSTC.R0100609                                                  
+           00:08:41  C1G0134I  ELEMENT FOOTPRINTED IN DATASET                                                                        
+           00:08:41  C1X0012I  STEP DBRMCOPY INVOKING PROGRAM IEBGENER                                                               
+           00:08:41  C1X0010I  STEP DBRMCOPY PROGRAM IEBGENER COMPLETED, RC=0000                                                     
+           00:08:41  C1G0000I     ELEMENT MARBLE01                                                                                   
+           00:08:41  C1G0000I     DATA SET KWOYO01.MARBLES.DBRMLIB                                                                   
+           00:08:41  C1G0134I  ELEMENT FOOTPRINTED IN DATASET                                                                        
+           00:08:41  C1X0012I  STEP OBJCOPY INVOKING PROGRAM IEBGENER                                                                
+           00:08:41  C1X0010I  STEP OBJCOPY PROGRAM IEBGENER COMPLETED, RC=0000                                                      
+           00:08:41  C1G0000I     ELEMENT MARBLE01                                                                                   
+           00:08:41  C1G0000I     DATA SET KWOYO01.MARBLES.OBJECT                                                                    
+           00:08:41  C1G0134I  ELEMENT FOOTPRINTED IN DATASET                                                                        
+           00:08:42  C1X0012I  STEP CONLIST INVOKING PROGRAM CONLIST                                                                 
+           00:08:42  C1X0013I  PARM=STORE                                                                                            
+           00:08:42  C1G0000I     DATA SET KWOYO01.MARBLES.LISTING                                                                   
+           00:08:42  C1G0000I     MEMBER MARBLE01                                                                                    
+           00:08:42  C1G0132I  ELEMENT VVLL 0101 WRITTEN TO DATA SET                                                                 
+           00:08:42  C1X0010I  STEP CONLIST PROGRAM CONLIST COMPLETED, RC=0000                                                       
+           00:08:42  C1G0000I     ELEMENT MARBLE01                                                                                   
+           00:08:42  C1G0000I     DATA SET KWOYO01.MARBLES.LISTING                                                                   
+           00:08:42  C1G0134I  ELEMENT FOOTPRINTED IN DATASET                                                                        
+           00:08:42  C1G0000I     ELEMENT MARBLE01                                                                                   
+           00:08:42  C1C0001I  BEGINNING UPDATE OF COMPONENT LIST AT STAGE TEST                                                      
+           00:08:42  SMGR130I  COMPONENT VVLL 0107 CREATED AT LOCATION SMPLTEST/T/MARBLES/MARBLES/COBOL                              
+           00:08:42  ACMB022I  ACM INDEX UPDATES COMPLETED:                                                                          
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.         03MAR20 00:08:42     PAGE    10   
+                                           E N D E V O R   E X E C U T I O N   R E P O R T                                           
+ REQUESTED BY: KWOYO01                                                                                                               
+                                                                                                                                     
+                                                                                                                                     
+           00:08:42  ACMB023I          ACM ELEMENTS: 1                                                                               
+           00:08:42  ACMB023I           ACM MEMBERS: 1                                                                               
+           00:08:42  C1G0144I  PROCESSOR GCOBP EXECUTION COMPLETED, HIGHEST PROCESSOR STEP RC WAS 0004                               
+           00:08:42  C1G0200I  ELEMENT ACTION REQUEST PROCESSING COMPLETED, HIGHEST ENDEVOR RC WAS 0000                              
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.         03MAR20 00:08:42     PAGE     1   
+                                      E N D E V O R   A C T I O N   S U M M A R Y   R E P O R T                                      
+ REQUESTED BY: KWOYO01                                                                                                               
+                                                                                                                                     
+                                                                                                                                     
+                                 PROC  NDVR   +------------  INVENTORY  INFORMATION  -----------+  ACTION   ACTION   STMT    SCL     
+           ACTION    ELEMENT      RC    RC    ENVIRONMENT   SYSTEM    SUBSYSTEM   TYPE     STAGE    TIME    NUMBER  NUMBER WRITTEN   
+           GENERATE  MARBLE01    0004  0000   SMPLTEST      MARBLES   MARBLES     COBOL      T    00:08:41       1       1           
+           END OF EXECUTION LOG - HIGHEST ENDEVOR RC = 0000                                                                          

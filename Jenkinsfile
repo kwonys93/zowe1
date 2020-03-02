@@ -26,10 +26,11 @@ pipeline {
         stage('BUILD') {
           steps {
             parallel (
-             "Update-cobol": { 
+ /*            "Update-cobol": { 
                 echo 'Building cobol..'
                 sh 'gulp update-cobol'
              },
+     */        
              "Build-cobol": { 
                 echo 'Generating cobol..'
                 sh 'build-cobol'
