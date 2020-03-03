@@ -63,7 +63,7 @@ function deleteMarble(color, callback) {
 *
 */
 function getMarbleQuantity(color, callback) {
-  var command = 'zowe db2 execute sql -q "SELECT * FROM EVENT.MARBLE" --rfj';
+//  var command = 'zowe db2 execute sql -q "SELECT * FROM EVENT.MARBLE" --rfj';
 
   cmd.get(command, function(err, data, stderr) {
     //log output
