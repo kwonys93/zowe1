@@ -66,7 +66,7 @@ var cmd = require('node-cmd'),
     
     gulp.task('copy-dbrm', function (callback) {
       //var command = 'zowe file-master-plus copy data-set "' + config.devDBRMLIB + '" "' + config.testDBRMLIB + '" -m ' + config.testElement;
-      var command = 'zowe zos-extended-files copy data-set "KWOYO01.MARBLES.DBRMLIB(MARBLE01)" "KWOYO01.MARBLES.DBRMLIB2(MARBLE01)" --replace';
+      var command = 'zowe zos-extended-files copy data-set "KWOYO01.MARBLES.DBRMLIB(MARBLE01)" "KWOYO01.MARBLES.T12M.DBRMLIB(MARBLE01)" --replace';
 
       simpleCommand(command, "command-archive/copy-dbrm", callback);
     });
