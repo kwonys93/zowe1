@@ -240,9 +240,9 @@
             UNSTRING WS-CICS-INPUT DELIMITED BY SPACE                           
                 INTO WS-INPUT-TRAN-ID,                                          
                      WS-INPUT-VERB,                                             
-                     WS-INPUT-COLOR,                                            
+                    WS-INPUT-COLOR,                                            
                      WS-INPUT-INV,                                              
-                     WS-INPUT-COST,                                             
+      *               WS-INPUT-COST,                                             
                      WS-INPUT-TRAILER                                           
             END-UNSTRING.                                                       
       * ===============================================================         
