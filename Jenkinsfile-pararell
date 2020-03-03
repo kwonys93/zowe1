@@ -83,7 +83,7 @@ pipeline {
    /* 
                "Test-Validation": { 
                     echo 'Validating..'
-                    sh 'chmod -R 777 /var/lib/jenkins/workspace/zowe-pipeline1/node_modules/.bin/*'
+                    sh 'chmod -R 777 /var/lib/jenkins/workspace/BCA-PIPELINE-DEMO/node_modules/.bin/*'
                     sh 'npm test'
                 },
    */             

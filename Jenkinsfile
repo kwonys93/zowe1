@@ -72,5 +72,12 @@ pipeline {
                 sh 'gulp test-data'
             }
         }
+        stage('Test-validation') {
+            steps {
+                    echo 'Validating..'
+                    sh 'chmod -R 777 /var/lib/jenkins/workspace/BCA-PIPELINE-DEMO/node_modules/.bin/*'
+                    sh 'npm test'
+            }
+        }
     }
 }
