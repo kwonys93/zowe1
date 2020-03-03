@@ -242,7 +242,7 @@
                      WS-INPUT-VERB,                                             
                     WS-INPUT-COLOR,                                            
                      WS-INPUT-INV,                                              
-                  WS-INPUT-COST,                        
+      *            WS-INPUT-COST,                        
                      WS-INPUT-TRAILER                                           
             END-UNSTRING.                                                       
       * ===============================================================         

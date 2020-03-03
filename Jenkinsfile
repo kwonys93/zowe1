@@ -72,6 +72,7 @@ pipeline {
                 sh 'gulp test-data'
             }
         }
+        /*
         stage('Test-validation') {
             steps {
                     echo 'Validating..'
@@ -79,5 +80,6 @@ pipeline {
                     sh 'npm test'
             }
         }
+        */
     }
 }
