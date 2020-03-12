@@ -41,13 +41,12 @@ pipeline {
                 sh 'gulp build-lnk'
             }
         }
-/*      stage('Copy-load') {
+        stage('Copy-load') {
             steps {
                 echo 'Copying module to CICS env..'
                 sh 'gulp copy-load'
             }
         }
-*/
         stage('Copy-dbrm') {
             steps {
                 echo 'Copying dbrm to db2..'

@@ -1,0 +1,547 @@
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights
+ ** CA JAPAN DE42 FOR WIPRO **                         CA Endevor SCM           
+ PRINT                                  BROWSE                                  
+ ELEMENT: MARBLE01                                                              
+                                                                                
+ *******************************************************************************
+ *******************************************************************************
+ **                                                                           **
+ ** ELEMENT BROWSE                                            04MAR20  11:56  **
+ **                                                                           **
+ **    ENVIRONMENT:   SMPLTEST   SYSTEM:    MARBLES   SUBSYSTEM:  MARBLES     **
+ **    TYPE:          COBOL      STAGE ID:  T                                 **
+ **    ELEMENT:       MARBLE01                                                **
+ **                                                                           **
+ **    SIGNED OUT TO: KWOYO01                         DELTA TYPE: REVERSE     **
+ **                                                                           **
+ *******************************************************************************
+ *******************************************************************************
+                                                                                
+ -------------------------- SOURCE LEVEL INFORMATION ---------------------------
+                                                                                
+   VVLL SYNC USER     DATE    TIME     STMTS CCID         COMMENT                                   
+   ---- ---- -------- ------- ----- -------- ------------ ----------------------------------------  
+   0100      HAOPI01  02MAR20 15:45      462 MARBLE       GCOBP                                     
+   0101      KWOYO01  02MAR20 23:50      462 ABCD         TEST9                                     
+   0102      KWOYO01  03MAR20 00:42      462 ABCD         TEST9                                     
+   0103      HAOPI01  03MAR20 11:09      463 CUST001      CUST001                                   
+   0104      VILRE01  03MAR20 11:14      464 X            X                                         
+   0105      KWOYO01  03MAR20 11:17      465 ABCD1        TEST1                                     
+   0106      KWOYO01  03MAR20 11:37      465 ABCD1        TEST1                                     
+   0107      KWOYO01  03MAR20 11:49      465 ABCD9        TEST9                                     
+   0108      KWOYO01  03MAR20 11:54      465 YSK1         YSK1                                      
+   0109      KWOYO01  03MAR20 15:28      465 YSK1         YSK1                                      
+   0110      KWOYO01  03MAR20 21:31      465 YSK1         YSK1                                      
+   0111      KWOYO01  03MAR20 21:46      465 YSK1         YSK1                                      
+   0112      KWOYO01  04MAR20 11:52      464 YSK1         YSK1                                      
+ GENERATED   KWOYO01  04MAR20 11:52          ABCD         TEST223                                   
+                                                                                                    
+  +0100            * ===============================================================         
+  +0100            * The user invokes this transaction (called MB01) via:                    
+  +0100            *   MB01 <VERB>                                                           
+  +0100            * Comment                                                                 
+  +0100            * Where:                                                                  
+  +0100            *   <VERB> = CRE|UPD|DEL                                                  
+  +0100            *                                                                         
+  +0100            * Verb Functions:                                                         
+  +0100            *                                                                         
+  +0100            * CREate                                                                  
+  +0100            *  Invoked via MB01 CRE <COLOR> <INVENTORY> <COST>                        
+  +0100            *                                                                         
+  +0100            *  Where:                                                                 
+  +0100            *   <COLOR>     A new marble color not defined in EVENT.MARBLE            
+  +0100            *   <INVENTORY> An integer representing the inventory count               
+  +0100            *   <COST>      An integer representing the cost per unit                 
+  +0100            *                                                                         
+  +0100            *  Errors:                                                                
+  +0100            *   MARB002E (color already exists in inventory)                          
+  +0100            *   MARB004E (color is not available - not found in EVENT.COLOR)          
+  +0100            *   MARB005E (color is reserved for another user                          
+  +0100            *                                                                         
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.   
+ ** CA JAPAN DE42 FOR WIPRO **                         CA Endevor SCM                        
+ PRINT                                  BROWSE                                    ACTION #   
+ ELEMENT: MARBLE01                                                                           
+                                                                                             
+  +0100            *  Example:                                                               
+  +0100            *   MB01 CRE RED 10 4                                                     
+  +0100            *                                                                         
+  +0100            * UPDate                                                                  
+  +0100            *  Invoked via MB01 UPD <COLOR> <INVENTORY> <COST>                        
+  +0100            *                                                                         
+  +0100            *  Where:                                                                 
+  +0100            *   <COLOR>     A marble color defined in EVENT.MARBLE                    
+  +0100            *   <INVENTORY> An integer representing the new inventory count           
+  +0100            *   <COST>      An integer representing the new cost per unit             
+  +0100            *                                                                         
+  +0100            *  Errors:                                                                
+  +0100            *   MARB001E (color not found in inventory)                               
+  +0100            *   MARB005E (color is reserved for another user                          
+  +0100            *                                                                         
+  +0100            *  Example:                                                               
+  +0100            *   MB01 UPD RED 1 5                                                      
+  +0100            *                                                                         
+  +0100            * DELete                                                                  
+  +0100            *  Invoked via MB01 DEL <COLOR>                                           
+  +0100            *                                                                         
+  +0100            *  Where:                                                                 
+  +0100            *   <COLOR>     A marble color defined in EVENT.MARBLE                    
+  +0100            *                                                                         
+  +0100            *  Errors:                                                                
+  +0100            *   MARB001E (color not found in inventory)                               
+  +0100            *   MARB005E (color is reserved for another user                          
+  +0100            *                                                                         
+  +0100            *  Example:                                                               
+  +0100            *   MB01 DEL RED                                                          
+  +0100            *                                                                         
+  +0100            * Other Error Conditions:                                                 
+  +0100            *   MARB003E (invalid operation was requested)                            
+  +0100            *                                                                         
+  +0100            * Build via                                                               
+  +0100            *  gulp build --source marbles.cbl && gulp refresh --source marbles.cbl   
+  +0100            *                                                                         
+  +0100            * ===============================================================         
+  +0100             IDENTIFICATION DIVISION.                                                 
+  +0100             PROGRAM-ID. MARBLE01.                                                    
+  +0100             ENVIRONMENT DIVISION.                                                    
+  +0100             DATA DIVISION.                                                           
+  +0100            * ===============================================================         
+  +0100            * Map input / output areas                                                
+  +0100            * ===============================================================         
+  +0100             WORKING-STORAGE SECTION.                                                 
+  +0100             01 WS-WORK.                                                              
+  +0100                02 WS-WORK-COLOR               PIC X(10) VALUE SPACE.                 
+  +0100                02 WS-WORK-INV                 PIC S9(4) COMP VALUE 0.                
+  +0100                02 WS-WORK-COST                PIC S9(4) COMP VALUE 0.                
+  +0100                02 WS-WORK-ROW-COUNT           PIC S9(4) COMP-3 VALUE 0.              
+  +0100                02 WS-WORK-TRAN                PIC X(4)  VALUE SPACE.                 
+  +0100                02 WS-WORK-RED                 PIC S9(4) COMP VALUE 0.                
+  +0100                02 WS-WORK-GREEN               PIC S9(4) COMP VALUE 0.                
+  +0100                02 WS-WORK-BLUE                PIC S9(4) COMP VALUE 0.                
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.   
+ ** CA JAPAN DE42 FOR WIPRO **                         CA Endevor SCM                        
+ PRINT                                  BROWSE                                    ACTION #   
+ ELEMENT: MARBLE01                                                                           
+                                                                                             
+  +0100             01 WS-RESULT.                                                            
+  +0100                02 WS-RESULT-COLOR             PIC 9(1)  VALUE 0.                     
+  +0100                   88 WS-RESULT-COLOR-NOTFOUND     VALUE 0.                           
+  +0100                   88 WS-RESULT-COLOR-FOUND        VALUE 1.                           
+  +0100                02 WS-RESULT-OPERATION         PIC 9(1)  VALUE 0.                     
+  +0100                   88 WS-RESULT-OPERATION-FAIL     VALUE 0.                           
+  +0100                   88 WS-RESULT-OPERATION-SUCCESS  VALUE 1.                           
+  +0100                02 WS-RESULT-VERB              PIC 9(1)  VALUE 0.                     
+  +0100                   88 WS-RESULT-VERB-INVALID       VALUE 0.                           
+  +0100                   88 WS-RESULT-VERB-CREATE        VALUE 1.                           
+  +0100                   88 WS-RESULT-VERB-UPDATE        VALUE 2.                           
+  +0100                   88 WS-RESULT-VERB-DELETE        VALUE 3.                           
+  +0100             01 WS-CONST.                                                             
+  +0100                02 WS-CONST-CREATE             PIC X(3)  VALUE 'CRE'.                 
+  +0100                02 WS-CONST-UPDATE             PIC X(3)  VALUE 'UPD'.                 
+  +0100                02 WS-CONST-DELETE             PIC X(3)  VALUE 'DEL'.                 
+  +0100                02 WS-CONST-SUCCESS            PIC X(7)  VALUE 'SUCCESS'.             
+  +0100             01 WS-ERROR-CODES.                                                       
+  +0100                02 WS-ERROR-MARBLE-DNE         PIC X(8)  VALUE 'MARB001E'.            
+  +0100                02 WS-ERROR-MARBLE-EXISTS      PIC X(8)  VALUE 'MARB002E'.            
+  +0100                02 WS-ERROR-VERB-DNE           PIC X(8)  VALUE 'MARB003E'.            
+  +0100                02 WS-ERROR-COLOR-DNE          PIC X(8)  VALUE 'MARB004E'.            
+  +0100                02 WS-ERROR-COLOR-INVALID      PIC X(8)  VALUE 'MARB005E'.            
+  +0100             01 WS-CICS-INPUT                  PIC X(74) VALUE SPACES.                
+  +0100             01 WS-INPUT.                                                             
+  +0100                05 WS-INPUT-TRAN-ID            PIC X(4).                              
+  +0100                05 WS-INPUT-VERB               PIC X(3)  VALUE SPACES.                
+  +0100                05 WS-INPUT-COLOR              PIC X(10) VALUE SPACES.                
+  +0100                05 WS-INPUT-INV                PIC 9(4)  VALUE 0.                     
+  +0100                05 WS-INPUT-COST               PIC 9(4)  VALUE 0.                     
+  +0100                05 WS-INPUT-TRAILER            PIC X(20) VALUE SPACE.                 
+  +0100             01 WS-OUTPUT                      PIC X(78) VALUE SPACE.                 
+  +0100             01 WS-OUTPUT-SUCCESS              REDEFINES WS-OUTPUT.                   
+  +0100                05 WS-OUTPUT-SUCCESS-TEXT      PIC X(7).                              
+  +0100                05 FILLER                      PIC X(1).                              
+  +0100                05 WS-OUTPUT-SUCCESS-WARNING   PIC X(70).                             
+  +0100             01 WS-OUTPUT-ERROR                REDEFINES WS-OUTPUT.                   
+  +0100                05 WS-OUTPUT-ERROR-CODE        PIC X(8).                              
+  +0100                05 FILLER                      PIC X(1).                              
+  +0100                05 WS-OUTPUT-ERROR-MESSAGE     PIC X(69).                             
+  +0100             01 WS-MSG-LENGTH                  PIC S9(4) COMP.                        
+  +0100            * ===============================================================         
+  +0100            * Map SQL table for this transaction                                      
+  +0100            * ===============================================================         
+  +0100                 EXEC SQL DECLARE EVENT.MARBLE TABLE                                  
+  +0100                 ( COLOR                          VARCHAR(10) NOT NULL,               
+  +0100                   INVENTORY                      INTEGER     NOT NULL,               
+  +0100                   COST                           INTEGER     NOT NULL                
+  +0100                 ) END-EXEC.                                                          
+  +0100                 EXEC SQL DECLARE EVENT.COLOR TABLE                                   
+  +0100                 ( COLOR                          VARCHAR(10) NOT NULL,               
+  +0100                   TRAN                           CHAR   (4)  NOT NULL,               
+  +0100                   RED                            INTEGER     NOT NULL,               
+  +0100                   GREEN                          INTEGER     NOT NULL,               
+  +0100                   BLUE                           INTEGER     NOT NULL                
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.   
+ ** CA JAPAN DE42 FOR WIPRO **                         CA Endevor SCM                        
+ PRINT                                  BROWSE                                    ACTION #   
+ ELEMENT: MARBLE01                                                                           
+                                                                                             
+  +0100                 ) END-EXEC.                                                          
+  +0100                 EXEC SQL INCLUDE SQLCA END-EXEC.                                     
+  +0100            * ===============================================================         
+  +0100            * MB01 transaction                                                        
+  +0100            * ===============================================================         
+  +0100             PROCEDURE DIVISION.                                                      
+  +0100            *                                                                         
+  +0100            *     Initial working storage to known values                             
+  +0100            *                                                                         
+  +0100                  PERFORM INIT-WORK-AREAS.                                            
+  +0100            *                                                                         
+  +0100            *     Receive user input (e.g. CRE BLUE)                                  
+  +0100            *                                                                         
+  +0100                  PERFORM GET-TRANS-INPUT.                                            
+  +0100            *                                                                         
+  +0100            *     Parse the user input into corresponding fields                      
+  +0100            *                                                                         
+  +0100                  PERFORM PARSE-CICS-INPUT.                                           
+  +0100            *                                                                         
+  +0100            *     Verify known input verb                                             
+  +0100            *                                                                         
+  +0100                  PERFORM VERIFY-VERB.                                                
+  +0100            *                                                                         
+  +0100            *     Verify correct color                                                
+  +0100            *                                                                         
+  +0100                  IF WS-OUTPUT-ERROR-CODE = SPACE THEN                                
+  +0100                      PERFORM VERIFY-COLOR.                                           
+  +0100            *                                                                         
+  +0100            *     Route to specific verb processing routine                           
+  +0100            *                                                                         
+  +0100                  IF WS-OUTPUT-ERROR-CODE = SPACE THEN                                
+  +0100                      EVALUATE TRUE                                                   
+  +0100            *                                                                         
+  +0100            *     Process a CREate request                                            
+  +0100            *                                                                         
+  +0100                      WHEN WS-RESULT-VERB-CREATE                                      
+  +0100                          PERFORM CHECK-IF-COLOR-FOUND                                
+  +0100                          IF WS-RESULT-COLOR-FOUND THEN                               
+  +0100                              PERFORM OUTPUT-MARBLE-ALREADY-EXISTS                    
+  +0100                          ELSE                                                        
+  +0100                              PERFORM INSERT-COLOR                                    
+  +0100                              IF WS-RESULT-OPERATION-SUCCESS THEN                     
+  +0100                                  PERFORM OUTPUT-SUCCESS                              
+  +0100                              END-IF                                                  
+  +0100                          END-IF                                                      
+  +0100            *                                                                         
+  +0100            *     Process an UPDate request                                           
+  +0100            *                                                                         
+  +0100                      WHEN WS-RESULT-VERB-UPDATE                                      
+  +0100                          PERFORM CHECK-IF-COLOR-FOUND                                
+  +0100                          IF WS-RESULT-COLOR-FOUND THEN                               
+  +0100                              PERFORM UPDATE-COLOR                                    
+  +0100                              IF WS-RESULT-OPERATION-SUCCESS THEN                     
+  +0100                                  PERFORM OUTPUT-SUCCESS                              
+  +0100                              END-IF                                                  
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.   
+ ** CA JAPAN DE42 FOR WIPRO **                         CA Endevor SCM                        
+ PRINT                                  BROWSE                                    ACTION #   
+ ELEMENT: MARBLE01                                                                           
+                                                                                             
+  +0100                          ELSE                                                        
+  +0100                              PERFORM OUTPUT-MARBLE-DOES-NOT-EXIST                    
+  +0100                          END-IF                                                      
+  +0100            *                                                                         
+  +0100            *     Process a DELete request                                            
+  +0100            *                                                                         
+  +0100                      WHEN WS-RESULT-VERB-DELETE                                      
+  +0100                          PERFORM CHECK-IF-COLOR-FOUND                                
+  +0100                          IF WS-RESULT-COLOR-FOUND THEN                               
+  +0100                              PERFORM DELETE-COLOR                                    
+  +0100                              IF WS-RESULT-OPERATION-SUCCESS THEN                     
+  +0100                                  PERFORM OUTPUT-SUCCESS                              
+  +0100                              END-IF                                                  
+  +0100                          ELSE                                                        
+  +0100                              PERFORM OUTPUT-MARBLE-DOES-NOT-EXIST                    
+  +0100                          END-IF                                                      
+  +0100                      END-EVALUATE                                                    
+  +0100                  END-IF.                                                             
+  +0100            *                                                                         
+  +0100            *     Tell the user the result and exit.                                  
+  +0100            *                                                                         
+  +0100                  PERFORM WRITE-OUTPUT                                                
+  +0100                  GOBACK.                                                             
+  +0100            * ===============================================================         
+  +0100            * Initialize working areas                                                
+  +0100            * ===============================================================         
+  +0100             INIT-WORK-AREAS.                                                         
+  +0100            *                                                                         
+  +0100            *     Set work areas to known values                                      
+  +0100            *                                                                         
+  +0100                  INITIALIZE SQLCA.                                                   
+  +0100                  MOVE 74 TO WS-MSG-LENGTH.                                           
+  +0100                  MOVE SPACES TO WS-INPUT.                                            
+  +0100                  MOVE SPACES TO WS-OUTPUT.                                           
+  +0100            * ===============================================================         
+  +0100            * Get transaction input                                                   
+  +0100            * ===============================================================         
+  +0100             GET-TRANS-INPUT.                                                         
+  +0100            *                                                                         
+  +0100            *     Receive input from user                                             
+  +0100            *                                                                         
+  +0100                  EXEC CICS RECEIVE                                                   
+  +0100                              INTO(WS-CICS-INPUT)                                     
+  +0100                              LENGTH(WS-MSG-LENGTH)                                   
+  +0100                  END-EXEC.                                                           
+  +0100            * ===============================================================         
+  +0100            * Parse the transaction input : ysk v1.0                                  
+  +0100            * ===============================================================         
+  +0105            * ===============================================================         
+  +0105            * ===============================================================         
+  +0100             PARSE-CICS-INPUT.                                                        
+  +0100                  UNSTRING WS-CICS-INPUT DELIMITED BY SPACE                           
+  +0100                      INTO WS-INPUT-TRAN-ID,                                          
+  +0100                           WS-INPUT-VERB,                                             
+  +0107                          WS-INPUT-COLOR,                                             
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.   
+ ** CA JAPAN DE42 FOR WIPRO **                         CA Endevor SCM                        
+ PRINT                                  BROWSE                                    ACTION #   
+ ELEMENT: MARBLE01                                                                           
+                                                                                             
+  +0100                           WS-INPUT-INV,                                              
+ %+0112                        WS-INPUT-COST,                                                
+  +0100                           WS-INPUT-TRAILER                                           
+  +0100                  END-UNSTRING.                                                       
+  +0100            * ===============================================================         
+  +0100            * Set indicator if verb is invalid                                        
+  +0100            * ===============================================================         
+  +0100             VERIFY-VERB.                                                             
+  +0100            *                                                                         
+  +0100            *     Validate the request type                                           
+  +0100            *                                                                         
+  +0100                  IF WS-CONST-CREATE = WS-INPUT-VERB THEN                             
+  +0100                      SET WS-RESULT-VERB-CREATE TO TRUE                               
+  +0100                  ELSE IF WS-CONST-UPDATE = WS-INPUT-VERB THEN                        
+  +0100                      SET WS-RESULT-VERB-UPDATE TO TRUE                               
+  +0100                  ELSE IF WS-CONST-DELETE = WS-INPUT-VERB THEN                        
+  +0100                      SET WS-RESULT-VERB-DELETE TO TRUE                               
+  +0100                  ELSE                                                                
+  +0100                      SET WS-RESULT-VERB-INVALID TO TRUE                              
+  +0100                      PERFORM VERB-DOES-NOT-EXIST                                     
+  +0100                  END-IF.                                                             
+  +0100            * ===============================================================         
+  +0100            * Set indicator if color is invalid                                       
+  +0100            * ===============================================================         
+  +0100             VERIFY-COLOR.                                                            
+  +0100            *                                                                         
+  +0100            *     Validate the color being requested                                  
+  +0100            *                                                                         
+  +0100            *                                                                         
+  +0100                  IF EIBTRNID NOT = 'MARB' THEN                                       
+  +0100                      EXEC SQL                                                        
+  +0100                          SELECT COUNT(*) INTO :WS-WORK-ROW-COUNT                     
+  +0100                          FROM EVENT.COLOR                                            
+  +0100                          WHERE COLOR = :WS-INPUT-COLOR                               
+  +0100                      END-EXEC                                                        
+  +0100                      IF WS-WORK-ROW-COUNT = 0 THEN                                   
+  +0100                          PERFORM COLOR-DOES-NOT-EXIST                                
+  +0100                      ELSE                                                            
+  +0100                          EXEC SQL                                                    
+  +0100                              SELECT TRAN INTO :WS-WORK-TRAN                          
+  +0100                              FROM EVENT.COLOR                                        
+  +0100                              WHERE COLOR = :WS-INPUT-COLOR                           
+  +0100                          END-EXEC                                                    
+  +0100                          IF WS-WORK-TRAN NOT = EIBTRNID                              
+  +0100                              PERFORM COLOR-IS-RESERVED                               
+  +0100                          END-IF                                                      
+  +0100                      END-IF                                                          
+  +0100                  END-IF.                                                             
+  +0100            * ===============================================================         
+  +0100            * Write transaction response to user                                      
+  +0100            * ===============================================================         
+  +0100             WRITE-OUTPUT.                                                            
+  +0100            *                                                                         
+  +0100            *     Send response to terminal                                           
+  +0100            *                                                                         
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.   
+ ** CA JAPAN DE42 FOR WIPRO **                         CA Endevor SCM                        
+ PRINT                                  BROWSE                                    ACTION #   
+ ELEMENT: MARBLE01                                                                           
+                                                                                             
+  +0100                  EXEC CICS SEND                                                      
+  +0100                              FROM(WS-OUTPUT)                                         
+  +0100                              LENGTH(WS-MSG-LENGTH)                                   
+  +0100                              ERASE                                                   
+  +0100                  END-EXEC.                                                           
+  +0100            * ===============================================================         
+  +0100            * Set indicator if input color is found                                   
+  +0100            * ===============================================================         
+  +0100             CHECK-IF-COLOR-FOUND.                                                    
+  +0100            *                                                                         
+  +0100            *     Get count of rows on input color                                    
+  +0100            *                                                                         
+  +0100                  EXEC SQL                                                            
+  +0100                      SELECT COUNT(*) INTO :WS-WORK-ROW-COUNT                         
+  +0100                      FROM EVENT.MARBLE                                               
+  +0100                      WHERE COLOR = :WS-INPUT-COLOR                                   
+  +0100                  END-EXEC.                                                           
+  +0100            *                                                                         
+  +0100            *     If positive row count, mark "found" indicator                       
+  +0100            *                                                                         
+  +0100                  IF WS-WORK-ROW-COUNT > 0 THEN                                       
+  +0100                      SET WS-RESULT-COLOR-FOUND TO TRUE                               
+  +0100                  ELSE                                                                
+  +0100                      SET WS-RESULT-COLOR-NOTFOUND TO TRUE                            
+  +0100                  END-IF.                                                             
+  +0100            * ===============================================================         
+  +0100            * Move the marble doesn't exist message into the buffer                   
+  +0100            * ===============================================================         
+  +0100             VERB-DOES-NOT-EXIST.                                                     
+  +0100                  MOVE 67                       TO WS-MSG-LENGTH.                     
+  +0100                  MOVE WS-ERROR-VERB-DNE        TO WS-OUTPUT-ERROR-CODE.              
+  +0100                  MOVE 'USE CRE|UPD|DEL'        TO WS-OUTPUT-ERROR-MESSAGE.           
+  +0100                  STRING 'Invalid request ('                                          
+  +0100                     DELIMITED BY SIZE                                                
+  +0100                     WS-INPUT-VERB                                                    
+  +0100                     DELIMITED BY SPACE                                               
+  +0100                     ').  Use CREate, UPDate or DELete.'                              
+  +0100                     DELIMITED BY SIZE                                                
+  +0100                     INTO WS-OUTPUT-ERROR-MESSAGE.                                    
+  +0100            * ===============================================================         
+  +0100            * Move the marble doesn't exist message into the buffer                   
+  +0100            * ===============================================================         
+  +0100             OUTPUT-MARBLE-DOES-NOT-EXIST.                                            
+  +0100                  MOVE 62                       TO WS-MSG-LENGTH.                     
+  +0100                  MOVE WS-ERROR-MARBLE-DNE      TO WS-OUTPUT-ERROR-CODE.              
+  +0100                  STRING 'Color ('                                                    
+  +0100                     DELIMITED BY SIZE                                                
+  +0100                     WS-INPUT-COLOR                                                   
+  +0100                     DELIMITED BY SPACE                                               
+  +0100                     ') not found in inventory, CREate it.'                           
+  +0100                     DELIMITED BY SIZE                                                
+  +0100                     INTO WS-OUTPUT-ERROR-MESSAGE.                                    
+  +0100            * ===============================================================         
+  +0100            * Move the marble already exists message into the buffer                  
+  +0100            * ===============================================================         
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.   
+ ** CA JAPAN DE42 FOR WIPRO **                         CA Endevor SCM                        
+ PRINT                                  BROWSE                                    ACTION #   
+ ELEMENT: MARBLE01                                                                           
+                                                                                             
+  +0100             OUTPUT-MARBLE-ALREADY-EXISTS.                                            
+  +0100                  MOVE 64                       TO WS-MSG-LENGTH.                     
+  +0100                  MOVE WS-ERROR-MARBLE-EXISTS   TO WS-OUTPUT-ERROR-CODE.              
+  +0100                  STRING 'Color ('                                                    
+  +0100                     DELIMITED BY SIZE                                                
+  +0100                     WS-INPUT-COLOR                                                   
+  +0100                     DELIMITED BY SPACE                                               
+  +0100                     ') already exists, UPDate or DELete it.'                         
+  +0100                     DELIMITED BY SIZE                                                
+  +0100                     INTO WS-OUTPUT-ERROR-MESSAGE.                                    
+  +0100            * ===============================================================         
+  +0100            * Move the color doesn't exist message into the buffer                    
+  +0100            * ===============================================================         
+  +0100             COLOR-DOES-NOT-EXIST.                                                    
+  +0100                  SET  WS-RESULT-VERB-INVALID   TO TRUE.                              
+  +0100                  MOVE 45                       TO WS-MSG-LENGTH.                     
+  +0100                  MOVE WS-ERROR-COLOR-DNE       TO WS-OUTPUT-ERROR-CODE.              
+  +0100                  STRING 'Color ('                                                    
+  +0100                     DELIMITED BY SIZE                                                
+  +0100                     WS-INPUT-COLOR                                                   
+  +0100                     DELIMITED BY SPACE                                               
+  +0100                     ') is not available.'                                            
+  +0100                     DELIMITED BY SIZE                                                
+  +0100                     INTO WS-OUTPUT-ERROR-MESSAGE.                                    
+  +0100            * ===============================================================         
+  +0100            * Move the color invalid message into the buffer                          
+  +0100            * ===============================================================         
+  +0100             COLOR-IS-RESERVED.                                                       
+  +0100                  SET  WS-RESULT-VERB-INVALID   TO TRUE.                              
+  +0100                  MOVE WS-ERROR-COLOR-INVALID TO WS-OUTPUT-ERROR-CODE                 
+  +0100                  IF WS-WORK-TRAN = SPACE                                             
+  +0100                     MOVE 58 TO WS-MSG-LENGTH                                         
+  +0100                     STRING 'Color ('                                                 
+  +0100                         DELIMITED BY SIZE                                            
+  +0100                         WS-INPUT-COLOR                                               
+  +0100                         DELIMITED BY SPACE                                           
+  +0100                         ') is reserved for the faciliator'                           
+  +0100                         DELIMITED BY SIZE                                            
+  +0100                         INTO WS-OUTPUT-ERROR-MESSAGE                                 
+  +0100                  ELSE                                                                
+  +0100                     MOVE 66 TO WS-MSG-LENGTH                                         
+  +0100                     STRING 'Color ('                                                 
+  +0100                         DELIMITED BY SIZE                                            
+  +0100                         WS-INPUT-COLOR                                               
+  +0100                         DELIMITED BY SPACE                                           
+  +0100                         ') is reserved for another user ('                           
+  +0100                         'CUST0'                                                      
+  +0100                         WS-WORK-TRAN (3:2)                                           
+  +0100                         ')'                                                          
+  +0100                         DELIMITED BY SIZE                                            
+  +0100                         INTO WS-OUTPUT-ERROR-MESSAGE.                                
+  +0100            * ===============================================================         
+  +0100            * Move the success message into the buffer                                
+  +0100            * ===============================================================         
+  +0100             OUTPUT-SUCCESS.                                                          
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.   
+ ** CA JAPAN DE42 FOR WIPRO **                         CA Endevor SCM                        
+ PRINT                                  BROWSE                                    ACTION #   
+ ELEMENT: MARBLE01                                                                           
+                                                                                             
+  +0100                  MOVE WS-CONST-SUCCESS TO WS-OUTPUT-SUCCESS-TEXT.                    
+  +0100                  IF WS-INPUT-TRAILER = SPACE THEN                                    
+  +0100                      MOVE 7 TO WS-MSG-LENGTH                                         
+  +0100                  ELSE                                                                
+  +0100                      MOVE 74 TO WS-MSG-LENGTH                                        
+  +0100                      STRING                                                          
+  +0100                          '(EXTRANEOUS ARGUMENT "'                                    
+  +0100                          DELIMITED BY SIZE                                           
+  +0100                          WS-INPUT-TRAILER                                            
+  +0100                          DELIMITED BY SPACE                                          
+  +0100                          '" WAS IGNORED)'                                            
+  +0100                          DELIMITED BY SIZE                                           
+  +0100                          INTO WS-OUTPUT-SUCCESS-WARNING                              
+  +0100                  END-IF.                                                             
+  +0100            * ===============================================================         
+  +0100            * Insert color                                                            
+  +0100            * ===============================================================         
+  +0100             INSERT-COLOR.                                                            
+  +0100            *                                                                         
+  +0100            *    Set current inventory into WS-WORK-INV                               
+  +0100            *                                                                         
+  +0100                 MOVE WS-INPUT-INV TO WS-WORK-INV                                     
+  +0100                 MOVE WS-INPUT-COST TO WS-WORK-COST                                   
+  +0100                 EXEC SQL                                                             
+  +0100                     INSERT INTO EVENT.MARBLE                                         
+  +0100                     (COLOR,INVENTORY,COST)                                           
+  +0100                     VALUES (                                                         
+  +0100                           :WS-INPUT-COLOR,                                           
+  +0100                           :WS-WORK-INV,                                              
+  +0100                           :WS-WORK-COST)                                             
+  +0100                 END-EXEC                                                             
+  +0100                 SET WS-RESULT-OPERATION-SUCCESS TO TRUE.                             
+  +0100            * ===============================================================         
+  +0100            * Update current color                                                    
+  +0100            * ===============================================================         
+  +0100             UPDATE-COLOR.                                                            
+  +0100            *                                                                         
+  +0100            *    Set current inventory into WS-WORK-INV                               
+  +0100            *                                                                         
+  +0100                 MOVE WS-INPUT-INV TO WS-WORK-INV                                     
+  +0100                 MOVE WS-INPUT-COST TO WS-WORK-COST                                   
+  +0100                 EXEC SQL                                                             
+  +0100                     UPDATE EVENT.MARBLE                                              
+  +0100                     SET INVENTORY = :WS-WORK-INV,                                    
+  +0100                         COST = :WS-WORK-COST                                         
+  +0100                     WHERE COLOR = :WS-INPUT-COLOR                                    
+  +0100                 END-EXEC                                                             
+  +0100                 SET WS-RESULT-OPERATION-SUCCESS TO TRUE.                             
+  +0100            * ===============================================================         
+  +0100            * Delete color                                                            
+  +0100            * ===============================================================         
+  +0100             DELETE-COLOR.                                                            
+  +0100                 EXEC SQL                                                             
+  +0100                     DELETE FROM EVENT.MARBLE                                         
+  +0100                     WHERE COLOR = :WS-INPUT-COLOR                                    
+1CA Endevor SCM Version 18.0.12           Copyright (C) 1986-2018 CA. All Rights Reserved.   
+ ** CA JAPAN DE42 FOR WIPRO **                         CA Endevor SCM                        
+ PRINT                                  BROWSE                                    ACTION #   
+ ELEMENT: MARBLE01                                                                           
+                                                                                             
+  +0100                 END-EXEC                                                             
+  +0100                 SET WS-RESULT-OPERATION-SUCCESS TO TRUE.                             
