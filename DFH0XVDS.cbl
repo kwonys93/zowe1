@@ -206,7 +206,8 @@
       *   message will include Date, Time, Program Name,               *
       *   and error details.                                           *
       *================================================================*
-       WRITE-ERROR-MESSAGE.
+      *================================================================*
+      WRITE-ERROR-MESSAGE.
       * Obtain and format current time and date
            EXEC CICS ASKTIME ABSTIME(ABS-TIME)
            END-EXEC
