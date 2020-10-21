@@ -9,7 +9,7 @@
   "cicsTran": "MB01",
   "db2Database": "THISLOCN",
   "db2Port": 447,
-  "devDBRMLIB": "PRODUCT.NDVR.MARBLES.MARBLES.D1.DBRMLIB",
+  "devDBRMLIB": "CAAPJMF.ENDEVOR.SMPLTEST.DBRMLIB",
   "devLOADLIB": "KWOYO01.MARBLES.LOADLIB",
   "endevorEnvironment": "DEV",
   "endevorInstance": "ENDEVOR",
