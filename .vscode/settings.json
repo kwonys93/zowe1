@@ -16,5 +16,21 @@
             "url": "http://10.175.80.65:6002",
             "username": "CUST001"
         }
+    ],
+    "endevor.connections": [
+        {
+            "name": "DE42ED",
+            "hosts": [
+                {
+                    "datasource": "ENDEVOR",
+                    "filters": [],
+                    "id": 0,
+                    "name": "ENDEVOR",
+                    "profileLabel": "DE42ED",
+                    "url": "http://mvsde42.lvn.broadcom.net:10443",
+                    "username": "KWOYO01"
+                }
+            ]
+        }
     ]
 }
