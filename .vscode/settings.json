@@ -32,5 +32,8 @@
                 }
             ]
         }
-    ]
+    ],
+    "broadcom-cobol-lsp.cpy-manager.profiles": "",
+    "broadcom-cobol-lsp.cpy-manager.paths-local": [],
+    "broadcom-cobol-lsp.cpy-manager.paths-dsn": []
 }
