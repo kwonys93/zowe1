@@ -47,10 +47,17 @@ gulp.task("bind-n-grant", function (callback) {
   submitJobAndDownloadOutput(ds, "job-archive/bind-n-grant", 4, callback);
 });
 
-gulp.task("test-data", function (callback) {
-  var ds = config.sqlJCL;
-  submitJobAndDownloadOutput(ds, "job-archive/test-data", 4, callback);
+gulp.task("test-tran", function (callback) {
+  var ds = config.runTranJCL;
+  submitJobAndDownloadOutput(ds, "job-archive/test-tran", 4, callback);
 });
+
+gulp.task("verify-data", function (callback) {
+  var ds = config.sqlJCL;
+  submitJobAndDownloadOutput(ds, "job-archive/verify-data", 4, callback);
+});
+
+gulp.task("test-data", gulpSequence("test-tran", "verify-data"));
 
 gulp.task("build", gulpSequence("build-cobol", "build-lnk"));
 

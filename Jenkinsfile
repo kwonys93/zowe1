@@ -69,7 +69,7 @@ pipeline {
         }
         stage('Test-data') {
             steps {
-                echo 'Testing data..'
+                echo 'Testing transaction and verifying data..'
                 sh 'gulp test-data'
             }
         }
