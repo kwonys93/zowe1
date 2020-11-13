@@ -67,10 +67,16 @@ pipeline {
                 sh 'gulp bind-n-grant'
             }
         }
-        stage('Test-data') {
+        stage('Test-tran') {
             steps {
-                echo 'Testing transaction and verifying data..'
-                sh 'gulp test-data'
+                echo 'Testing transaction..'
+                sh 'gulp test-tran'
+            }
+        }
+         stage('Verify-data') {
+            steps {
+                echo 'verifying data for the test result..'
+                sh 'gulp verify-data'
             }
         }
         /*
