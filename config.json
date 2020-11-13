@@ -1,6 +1,6 @@
 {
   "bindGrantJCL": "KWOYO01.MARBLES.JCL(MARBIND)",
-  "runTranJCL": "KWOYO01.MARBLES.JCL(TESTTRAN)",
+  "testTranJCL": "KWOYO01.MARBLES.JCL(TESTTRAN)",
   "sqlJCL": "KWOYO01.MARBLES.JCL(MARBDB2)",
   "cicsConsole": "KWOYO01",
   "cicsPort": 6000,
