@@ -42,6 +42,45 @@ gulp.task("build-lnk", function (callback) {
   simpleCommand(command, "command-archive/build-lnk", callback);
 });
 
+gulp.task("copy-load", function (callback) {
+  var command =
+    'zowe file-master-plus copy data-set "' +
+    config.devLOADLIB +
+    '" "' +
+    config.testLOADLIB +
+    '" -m ' +
+    config.testElement;
+  //var command = 'zowe zos-extended-files copy data-set "KWOYO01.JCL(A)" "KWOYO01.DUMMY.JCL(A)" --replace';
+
+  simpleCommand(command, "command-archive/copy-load", callback);
+});
+
+gulp.task("copy-dbrm", function (callback) {
+  var command =
+    'zowe file-master-plus copy data-set "' +
+    config.devDBRMLIB +
+    '" "' +
+    config.testDBRMLIB +
+    '" -m ' +
+    config.testElement;
+  //var command = 'zowe zos-extended-files copy data-set "KWOYO01.MARBLES.DBRMLIB(MARBLE01)" "KWOYO01.MARBLES.T12M.DBRMLIB(MARBLE01)" --replace';
+
+  simpleCommand(command, "command-archive/copy-dbrm", callback);
+});
+
+gulp.task("cics-refresh", function (callback) {
+  // var command = 'zowe cics refresh program "' + config.cicsProgram + '"';
+  var command =
+    'zowe cics refresh program "' +
+    config.cicsProgram +
+    '"' +
+    ' --region-name "' +
+    config.cicsRegion +
+    '"';
+
+  simpleCommand(command, "command-archive/cics-refresh", callback);
+});
+
 gulp.task("bind-n-grant", function (callback) {
   var ds = config.bindGrantJCL;
   submitJobAndDownloadOutput(ds, "job-archive/bind-n-grant", 4, callback);
@@ -58,45 +97,6 @@ gulp.task("verify-data", function (callback) {
 });
 
 gulp.task("build", gulpSequence("build-cobol", "build-lnk"));
-
-gulp.task("cics-refresh", function (callback) {
-  // var command = 'zowe cics refresh program "' + config.cicsProgram + '"';
-  var command =
-    'zowe cics refresh program "' +
-    config.cicsProgram +
-    '"' +
-    ' --region-name "' +
-    config.cicsRegion +
-    '"';
-
-  simpleCommand(command, "command-archive/cics-refresh", callback);
-});
-
-gulp.task("copy-dbrm", function (callback) {
-  var command =
-    'zowe file-master-plus copy data-set "' +
-    config.devDBRMLIB +
-    '" "' +
-    config.testDBRMLIB +
-    '" -m ' +
-    config.testElement;
-  //var command = 'zowe zos-extended-files copy data-set "KWOYO01.MARBLES.DBRMLIB(MARBLE01)" "KWOYO01.MARBLES.T12M.DBRMLIB(MARBLE01)" --replace';
-
-  simpleCommand(command, "command-archive/copy-dbrm", callback);
-});
-
-gulp.task("copy-load", function (callback) {
-  var command =
-    'zowe file-master-plus copy data-set "' +
-    config.devLOADLIB +
-    '" "' +
-    config.testLOADLIB +
-    '" -m ' +
-    config.testElement;
-  //var command = 'zowe zos-extended-files copy data-set "KWOYO01.JCL(A)" "KWOYO01.DUMMY.JCL(A)" --replace';
-
-  simpleCommand(command, "command-archive/copy-load", callback);
-});
 
 gulp.task(
   "deploy",
