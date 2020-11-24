@@ -59,7 +59,7 @@
       *                                                                         
       * ===============================================================         
        IDENTIFICATION DIVISION.                                                 
-       PROGRAM-ID. MARBLE07.                                                    
+       PROGRAM-ID. MARBLE01.                                                    
        ENVIRONMENT DIVISION.                                                    
        DATA DIVISION.                                                           
       * ===============================================================         
@@ -233,11 +233,13 @@
       * ===============================================================         
       * Parse the transaction input : ysk v1.0                                  
       * ===============================================================         
+      * ===============================================================         
+      * ===============================================================         
        PARSE-CICS-INPUT.                                                        
             UNSTRING WS-CICS-INPUT DELIMITED BY SPACE                           
                 INTO WS-INPUT-TRAN-ID,                                          
                      WS-INPUT-VERB,                                             
-                     WS-INPUT-COLOR,                                            
+      * <--error    WS-INPUT-COLOR,                                             
                      WS-INPUT-INV,                                              
                      WS-INPUT-COST,                                             
                      WS-INPUT-TRAILER                                           
